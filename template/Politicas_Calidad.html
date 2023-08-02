@@ -1,0 +1,450 @@
+<style>
+.table thead th {
+   border-bottom: 0rem solid #e6e7e8 !important
+}
+.table td, .table th {
+   border-top: 0rem solid #e6e7e8 !important
+}
+.btn-icon-only {
+  width: 3.0rem;
+  height: 3.0rem;
+  padding: 0
+}
+.btn-size-icon {
+  font-size: 25px
+}
+.col-center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto
+}
+
+#trapezoid2 {
+  height: 0;
+  width: 300px;
+  border-top: 50px solid #5bcfde;
+  border-left: 45px solid transparent;
+  border-right: 45px solid transparent;
+  padding: 0 8px 0 0;
+  display: block;
+  position: relative;
+  z-index: 1000;
+}
+#trap2-text {
+  font-family: 'Pluto Black' !important;
+  position: absolute;
+  top: -43px;
+  left: 60px;
+  font-size: 22px;
+  /* font-weight: 900; */
+  color: white;
+}
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 35px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 35px solid #2ca0a3;
+}
+hr {
+    margin-top: 0.0rem;
+    margin-bottom: 1.5rem;
+    border: 0;
+    border-top: 0.2rem solid #bea768;
+}
+.segundo_triangulo {
+  top: 0px;
+  left: 19.6rem;
+  position: absolute;
+}
+p {
+  text-align: justify
+}
+.tamaño-icono {
+  font-size: 1.5rem
+}
+.badge-uno {
+  border-radius: 50px;
+  font-size: 1.7rem;
+  background-color: #e94e1c;
+  border: 1px solid #e0e0e0;
+  margin-right: 5px
+}
+.texto-uno {
+  color: #e94e1c; 
+  font-weight: 900
+}
+.badge-dos {
+  width: 3rem;
+  border-radius: 50px;
+  font-size: 1.7rem;
+  background-color: #ca9d66;
+  border: 1px solid #e0e0e0;
+  margin-right: 5px
+}
+.texto-dos {
+  color: #ca9d66; 
+  font-weight: 900
+}
+.badge-tres {
+  width: 3rem;
+  border-radius: 50px;
+  font-size: 1.7rem;
+  background-color: #f7b131;
+  border: 1px solid #e0e0e0;
+  margin-right: 5px
+}
+.texto-tres {
+  color: #f7b131; 
+  font-weight: 900
+}
+.badge-cuatro {
+  width: 3rem;
+  border-radius: 50px;
+  font-size: 1.7rem;
+  background-color: #a9378b;
+  border: 1px solid #e0e0e0;
+  margin-right: 5px
+}
+.texto-cuatro {
+  color: #a9378b; 
+  font-weight: 900
+}
+.badge-cinco {
+  width: 3rem;
+  border-radius: 50px;
+  font-size: 1.7rem;
+  background-color: #39a936;
+  border: 1px solid #e0e0e0;
+  margin-right: 5px
+}
+.texto-cinco {
+  color: #39a936; 
+  font-weight: 900
+}
+.media-luna {
+  border-bottom-color: white;
+  border-right-color: white;
+  border-radius: 50px;
+  background-color: #ffffff
+}
+.color-luna-uno {
+  border-top: solid 5px #e94e1a;;
+  border-left: solid 5px #e94e1a85;
+}
+.color-luna-dos {
+  border-top: solid 5px #c89e66;;
+  border-left: solid 5px #c89e669e;
+}
+.color-luna-tres {
+  border-top: solid 5px #f8b136;;
+  border-left: solid 5px #f8b13680;
+}
+.color-luna-cuatro {
+  border-top: solid 5px #a8378e;;
+  border-left: solid 5px #a8378e85;
+}
+.color-luna-cinco {
+  border-top: solid 5px #39a936;;
+  border-left: solid 5px #39a9367a;
+}
+.contenido-tarjeta {
+  background-color: #5bcfde;
+  border-radius: 10px;
+  color: white
+}
+@font-face {
+  font-family: 'Pluto Sans Regular';
+  src: url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.eot');
+  src: url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.eot?#iefix') format('embedded-opentype'),
+  url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.woff') format('woff'),
+  url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: "Pluto Black";
+    src: url("https://db.onlinewebfonts.com/t/7001cb455721479a34c81bc405ad96d4.eot");
+    src: url("https://db.onlinewebfonts.com/t/7001cb455721479a34c81bc405ad96d4.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/7001cb455721479a34c81bc405ad96d4.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/7001cb455721479a34c81bc405ad96d4.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/7001cb455721479a34c81bc405ad96d4.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/7001cb455721479a34c81bc405ad96d4.svg#Pluto Black")format("svg");
+}
+
+div,span,p {
+  font-family: 'Pluto Sans Regular' !important;
+  color: #9e9e9e;
+}
+
+h3{
+  font-family: 'Pluto Black' !important;
+  font-size: 1.5rem;
+}
+
+/* p {
+    text-align: center;
+  } */
+</style>
+<section class="section py-5">
+   <div class="container z-2" >
+      <div class="row position-relative justify-content-center align-items-cente">
+        <div class="col-12 col-lg-12">
+            <img class="d-none d-lg-inline-block" src="assets/img/header-poli.png" alt="Mobile App Illustration">
+        </div>
+        <!--Contenido Mision-->
+        <div class="col-12 mb-5">
+          <div class="triangle-up"> 
+            <!--pantalla grande-->
+            <div class="d-none d-lg-block" id="trapezoid2">
+              <span id="trap2-text">Misi&oacute;n</span>
+            </div>
+            <!--pantalla movil-->
+            <div class="d-lg-none" id="trapezoid2" style="width: 322px">
+              <span id="trap2-text">Misi&oacute;n</span>
+            </div>
+            <!--pantalla grande-->
+            <div class="triangle-up segundo_triangulo d-none d-lg-block"></div>
+            <!--pantalla movil-->
+            <div class="triangle-up segundo_triangulo d-lg-none" style="left: 21rem"></div>
+          </div>
+          <hr>
+          <p>Somos la autoridad del estado que rectora el servicio p&uacute;blico del Transporte Terrestre con la finalidad primordial de obtener para los usuarios, las mayores y mejores condiciones de calidad, seguridad, comodidad, eficiencia, economia y representatividad establecidas bajo el principio de equidad y potenciando el desarollo productivo del pa&iacute;s.</p>
+        </div>
+        <!--Contenido Vision-->
+        <div class="col-12 mb-5">
+          <div class="triangle-up" style="float: right;"> 
+            <!--pantalla grande-->
+            <div class="d-none d-lg-block" id="trapezoid2" style="float: right;">
+              <span id="trap2-text">Visi&oacute;n</span>
+            </div>
+            <!--pantalla movil-->
+             <div class="d-lg-none" id="trapezoid2" style="float: right;width: 322px;">
+              <span id="trap2-text">Visi&oacute;n</span>
+            </div>
+            <!--pantalla grande-->
+            <div class="triangle-up segundo_triangulo d-none d-lg-block" style="left: 46.9rem"></div>
+            <!--pantalla movil-->
+            <div class="triangle-up segundo_triangulo d-lg-none" style="left: 1.0rem"></div>
+          </div>
+          <hr style="margin-top: 2.1rem;">
+          <p>Lograr la legitimidad institucional por el valor p&uacute;blico generado al sistema integral del Transporte Terrestre, contribuyendo a la competitividad y movilidad sostenible del pais.</p>
+        </div>
+
+        <!--Contenido valores institucionales-->
+        <div class="col-12 mb-5">
+          <div class="triangle-up"> 
+            <!--pantalla grande-->
+            <div class="d-none d-lg-block" id="trapezoid2" style="width: 395px;">
+              <span id="trap2-text" style="left: 13px;">Valores Institucionales</span>
+            </div>
+            <!--pantalla movil-->
+            <div class="d-lg-none" id="trapezoid2" style="width: 322px;">
+              <span id="trap2-text">Valores</span>
+            </div>
+            <!--pantalla grande-->
+            <div class="triangle-up segundo_triangulo d-none d-lg-block" style="left: 25.6rem;"></div>
+            <!--pantalla movil-->
+            <div class="triangle-up segundo_triangulo d-lg-none" style="left: 21rem;"></div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <!--Contenido de probidad-->
+            <div class="col-12 col-sm-6 col-md-6 col-xl-6 mt-5">
+              <h3 class="texto-uno"><span class="badge badge-primary badge-uno"><i class="fas fa-balance-scale tamaño-icono"></i></span>Probidad:</h3>
+              <p>La probidad est&aacute; vinculada a la honradez, la integridad y la responsabilidad en el accionar. Actuando con probidad no se comete abuso, promueve la integridad, la confianza y a las buenas pr&aacute;cticas.</p>
+            </div>
+            <!--Contenido de innovacion-->
+            <div class="col-12 col-sm-6 col-md-6 col-xl-6 mt-5">
+              <h3 class="texto-dos"><span class="badge badge-primary badge-dos"><i class="fas fa-lightbulb tamaño-icono"></i></span>Innovaci&oacute;n:</h3>
+              <p>La aplicaci&oacute;n de las tendencias tecnol&oacute;gicas y la racionalizaci&oacute;n de los procesos nos ayudan a brindar calidad de servicio.</p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <!--Contenido de responsabilidad-->
+            <div class="col-12 col-sm-6 col-md-6 col-xl-6 mt-5">
+              <h3 class="texto-tres"><span class="badge badge-primary badge-tres"><i class="fas fa-users tamaño-icono"></i></span>Responsabilidad:</h3>
+              <p>En el ejercisio de nuestro trabajo conducirse con responsabilidad y compromiso, enfocados en el trabajo en equipo para el cumplimiento de nuestra misi&oacute;n y lograr la visi&oacute;n institucional.</p>
+            </div>
+            <!--Contenido de calidad de servicio-->
+            <div class="col-12 col-sm-6 col-md-6 col-xl-6 mt-5">
+              <h3 class="texto-cuatro"><span class="badge badge-primary badge-cuatro"><i class="fas fa-award tamaño-icono"></i></span>Calidad de Servicio:</h3>
+              <p>La Probidad, Responsabilidad, Trabajo en Equipo y la Innovaci&oacute;n garantizan las mayores y mejores condiciones para los usuarios del servicio de transporte.</p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <!--Contenido de trabajo en equipo-->
+            <div class="col-12 col-sm-6 col-md-6 col-xl-6 mt-5">
+              <h3 class="texto-cinco"><span class="badge badge-primary badge-cinco"><i class="fas fa-hands-helping tamaño-icono"></i></span>Trabajo en Equipo:</h3>
+              <p>La cohesi&oacute;n para el trabajo a trav&eacute;s del compañerismo nos crea sentido de pertenencia por nuestro labor y nos permite innovar y mejorar continuamente.</p>
+            </div>
+            <!--Contenido de imagen-->
+            <div class="col-12 col-sm-6 col-md-6 col-xl-6 mt-5">
+              <img class="d-none d-lg-inline-block" src="assets/img/transportin.png" alt="Mobile App Illustration">
+            </div>
+          </div>
+
+        </div>
+
+        <!--Contenido politica de calidad-->
+        <div class="col-12 mb-5">
+          <!--pantalla grande-->
+          <div class="triangle-up d-none d-lg-block" style="left: 44rem; position: absolute"> 
+            <div class="" id="trapezoid2" style="width: 363px;float: right">
+              <span class="" id="trap2-text" style="left: 20px;">Pol&iacute;tica de Calidad</span>
+            </div>
+            <div class="triangle-up segundo_triangulo" style="left: -25.4rem;border-left: 43px solid transparent"></div>
+          </div>
+          <!--pantalla movil-->
+          <div class="triangle-up d-lg-none"> 
+            <div class="" id="trapezoid2" style="width: 322px;">
+              <span id="trap2-text">Calidad</span>
+            </div>
+            <div class="triangle-up segundo_triangulo" style="left: 21rem"></div>
+          </div>
+          <!--hr grande-->
+          <hr class="d-none d-lg-block" style="margin-top: 2.1rem">
+          <!--hr movil-->
+          <hr class="d-lg-none">
+          <p>Reconocemos la importancia de ofrecer servicios de calidad para lograr la legitimidad institucional, reconocida a nivel nacional por los logros que se obtienen con transparencia, ética, eficacia y eficiencia, por lo que nos comprometemos a:</p>
+
+
+          <div class="row">
+            <!--Contenido de sistema de transporte terrestre-->
+            <div class="col-12 col-sm-6 col-md-6 col-xl-6 mt-5">
+              <h3 class="texto-uno"><span class="badge badge-primary badge-uno media-luna color-luna-uno" style="width: 3rem;"><i class="fas fa-bus-alt tamaño-icono" style="color: #e94e1a;"></i></span>Sistema de Transporte Terrestre</h3>
+              <ul class="list-unstyled" style="padding-left: 1.2rem !important;margin-bottom: 0px;">
+                <li class="py-1 lead">
+                  <div class="media">
+                      <span class="icon icon-sm text-success mr-3 mt-2"><i class="fa-solid fa-chevron-right"></i></span>
+                      <p>Consolidar el marco jur&iacute;dico y certificar la aptitud de escuelas, conductores, talleres y veh&iacute;culos, como componentes fundamentales del sistema de transprte terrestre de Honduras.</p>
+                  </div>
+                </li>
+              </ul>
+              <ul class="list-unstyled" style="padding-left: 1.2rem !important;">
+                <li class="py-1 lead">
+                  <div class="media">
+                      <span class="icon icon-sm text-success mr-3 mt-2"><i class="fa-solid fa-chevron-right"></i></span>
+                      <p>Mantener una comunicaci&oacute;n regular con las diferentes instituciones relacionadas con el sector transporte, a fin de dar cumplimiento a los convenios interinstitucionales suscritos.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!--Contenido de calidad operacional-->
+            <div class="col-12 col-sm-6 col-md-6 col-xl-6 mt-5">
+              <h3 class="texto-dos"><span class="badge badge-primary badge-uno media-luna color-luna-dos" style="width: 3rem;"><i class="fas fa-cogs tamaño-icono" style="color: #c89e66;"></i></span>Calidad Operacional</h3>
+              <ul class="list-unstyled" style="padding-left: 1.2rem !important;margin-bottom: 0px;">
+                <li class="py-1 lead">
+                  <div class="media">
+                      <span class="icon icon-sm text-success mr-3 mt-2"><i class="fa-solid fa-chevron-right"></i></span>
+                      <p>Buscar la autosostenibilidad financiera mediante la gesti&oacute;n eficaz de tarifas, cobros y recaudo.</p>
+                  </div>
+                </li>
+              </ul>
+              <ul class="list-unstyled" style="padding-left: 1.2rem !important;margin-bottom: 0px">
+                <li class="py-1 lead">
+                  <div class="media">
+                      <span class="icon icon-sm text-success mr-3 mt-2"><i class="fa-solid fa-chevron-right"></i></span>
+                      <p>Brindar servicios oportunos y con estricto cumplimiento de los requisitos jur&iacute;dicos y normativos.</p>
+                  </div>
+                </li>
+              </ul>
+              <ul class="list-unstyled" style="padding-left: 1.2rem !important;">
+                <li class="py-1 lead">
+                  <div class="media">
+                      <span class="icon icon-sm text-success mr-3 mt-2"><i class="fa-solid fa-chevron-right"></i></span>
+                      <p>Optimizar y mejorar continuamente nuestos procesos y tr&aacute;mites de servicio.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <!--Contenido de valor publico-->
+            <div class="col-12 col-sm-6 col-md-6 col-xl-6 mt-5">
+              <h3 class="texto-tres"><span class="badge badge-primary badge-uno media-luna color-luna-tres" style="width: 3rem;"><i class="fas fa-user tamaño-icono" style="color: #f8b136;"></i></span>Valor P&uacute;blico</h3>
+              <ul class="list-unstyled" style="padding-left: 1.2rem !important;margin-bottom: 0px;">
+                <li class="py-1 lead">
+                  <div class="media">
+                      <span class="icon icon-sm text-success mr-3 mt-2"><i class="fa-solid fa-chevron-right"></i></span>
+                      <p>Genera valor p&uacute;blico mejorando la movilidad y la seguridad en el transporte terrestre de personas y carga a nivel nacional.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!--Contenido de tecnologia-->
+            <div class="col-12 col-sm-6 col-md-6 col-xl-6 mt-5 mb-5">
+              <h3 class="texto-cinco"><span class="badge badge-primary badge-uno media-luna color-luna-cinco" style="width: 3rem;"><i class="fas fa-chart-line tamaño-icono" style="color: #39a936;"></i></span>Desarrollo Administrativo</h3>
+              <ul class="list-unstyled" style="padding-left: 1.2rem !important;margin-bottom: 0px;">
+                <li class="py-1 lead">
+                  <div class="media">
+                      <span class="icon icon-sm text-success mr-3 mt-2"><i class="fa-solid fa-chevron-right"></i></span>
+                      <p>Aplicar las buenas pr&aacute;cticas de desarrollo de la administraci&oacute;n p&uacute;blica.</p>
+                  </div>
+                </li>
+              </ul>
+              <ul class="list-unstyled" style="padding-left: 1.2rem !important;margin-bottom: 0px;">
+                <li class="py-1 lead">
+                  <div class="media">
+                      <i class="fa-solid fa-chevron-right" style="color: #18634B;"></i></span>&nbsp;&nbsp;&nbsp;
+                      <p>Aplicar los canales de comunicaci&oacute;n oficial.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+
+          </div>
+
+
+          <div class="row justify-content-center">
+            <!--Contenido de valor publico-->
+            <div class="col-12 col-sm-8 col-md-8 col-xl-8 mt-5">
+              <h3 class="texto-cuatro"><span class="badge badge-primary badge-uno media-luna color-luna-cuatro" style="width: 3rem;"><i class="fas fa-brain tamaño-icono" style="color: #a8378e;"></i></span>Tecnologias de Informaci&oacute;n, Comunicaci&oacute;n, Conocimiento y Aprendizaje(TICCA)</h3>
+              <ul class="list-unstyled" style="padding-left: 1.2rem !important;margin-bottom: 0px;">
+                <li class="py-1 lead">
+                  <div class="media">
+                      <span class="icon icon-sm text-success mr-3 mt-2"><i class="fa-solid fa-chevron-right"></i></span>
+                      <p>Suministrar informaci&oacute;n confiable, oportuna y segura para la toma de decisiones y la formulaci&oacute;n de pol&iacute;tica p&uacute;blica sectorial.</p>
+                  </div>
+                </li>
+              </ul>
+              <ul class="list-unstyled" style="padding-left: 1.2rem !important;margin-bottom: 0px">
+                <li class="py-1 lead">
+                  <div class="media">
+                      <span class="icon icon-sm text-success mr-3 mt-2"><i class="fa-solid fa-chevron-right"></i></span>
+                      <p>Lograr la interconexi&oacute;n directa para autenticar informaci&oacute;n y utilizar las nuevas tecnolog&iacute;as de inteligencia de negocios para soportar la planificaci&oacute;n, entrega y seguimiento de los servicios institucionales y de movilidad.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+          </div>
+
+
+          <div class="row">
+            <div class="col-12 col-sm-12 col-xl-12 mb-5 mb-lg-0">
+              <div class="card border-light" style="border-radius: 10px">
+                <div class="card-body contenido-tarjeta">
+                    <p class="card-text" style="font-weight: 900;color: white !important;">Estos compromisos nos exigen trabajar en equipo y con disposici&oacute;n de servicio, para prevenir los riesgos y mejorar continuamente nuestro desempeño.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+     
+        </div><!--cierre div politcas de calidad-->
+
+
+
+      </div>
+   </div>
+</section>

@@ -1,0 +1,308 @@
+.home-table {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.6rem;
+    margin-left: -.0625rem;
+    line-height: 1.25;
+    color: #4e5079;
+    background-color: #fff;
+    border: .1rem solid #e6e7e8;
+    height: 2.4rem;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.flecha {
+    line-height: 2.6;
+    margin-left: 3px
+}
+.flecha-izquierda {
+    line-height: 2.6;
+    margin-right: 5px;
+}
+.image-portada {
+       background-size: cover;
+      
+}
+
+@media (min-width: 576px)
+.image-portada {
+    background-size: cover;
+    width: 50px;
+}
+
+.scroll-box {
+    overflow-y: scroll;
+    height: 190px;
+    padding: 1rem
+}
+
+/*---------------------------------------------------------------
+[CSS de la barra de cargar archivos]
+-Tamaño de la barra
+-Color de la barra
+-Pocision,tamaño
+
+[SweetAlert de eliminar archivo]
+-Pocision del texto
+-Iconos
+----------------------------------------------------------------*/
+.b-infoBar__progress-line-step {
+    width: 50% !important;
+}
+/*--Barra de carga de archivos--*/
+.progress {
+    background-color: rgba(255, 64, 129, 0.22)
+}
+.progress .determinate {
+    /*position: absolute;*/
+    background-color: inherit;
+    width: 100%;
+    height: 20px;
+    border-radius: 3px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #043653c9;
+    -webkit-transition: width 0.3s linear;
+    -moz-transition: width 0.3s linear;
+    -o-transition: width 0.3s linear;
+    -ms-transition: width 0.3s linear;
+    transition: width 0.3s linear
+}
+.fm-notification-body {
+    text-align: left;
+}
+
+.fm-notification-icon {
+    background-position: 10px -1720px;
+}
+
+.fm-notification-icon{
+    background-image: url(https://na.static.mega.co.nz/3/images/mega/dialog-sprite_v5@2x.png);
+    background-size: 160px;
+}
+
+.fm-del-contact-avatar {
+    display: none;
+}
+
+.fm-del-contacts-number {
+    display: none;
+}
+
+.fm-notification-info {
+    margin-left: 90px;
+    display: table-cell;
+    vertical-align: middle;
+    height: 78px;
+}
+.fm-notification-info p {
+    font-size: 14px;
+    line-height: 21px;
+    padding: 0 0 0 0;
+    margin: 0;
+    color: #666666;
+}
+
+.fm-notification-warning {
+    font-size: 13px;
+    line-height: 21px;
+    color: #dd6b55;
+    padding: 15px 0 0 23px;
+    background-image: url(https://na.static.mega.co.nz/3/images/mega/dialogs-sprite_v12.svg);
+    background-position: -1px -1829px;
+    background-repeat: no-repeat;
+}
+
+.fm-notification-icon {
+    background-position: 10px -1720px;
+}
+
+
+.fm-notification-icon{
+    background-image: url(https://na.static.mega.co.nz/3/images/mega/dialog-sprite_v5@2x.png);
+    background-size: 160px;
+}
+.fm-notification-icon {
+    float: left;
+    width: 106px;
+    height: 75px;
+    background-image: url(https://na.static.mega.co.nz/3/images/mega/dialogs-sprite_v12.svg);
+    background-repeat: no-repeat;
+}
+/*--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+-[CSS de accordion flush]
+----------------------------------------------------------------*/
+.accordion-button {
+  text-align: left
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: none;
+  transform: rotateZ(45deg)
+}
+
+.accordion-button::after {
+  background-image: none;
+  content: '\f067';
+  font-family: "Font Awesome 5 Free";
+  font-size: 1rem;
+  font-weight: 900
+}
+
+.accordion-button:hover {
+  background-color: #eff1f5
+}
+
+.accordion-flush .accordion-button {
+  background-color: transparent
+}
+
+.accordion-flush .accordion-button:not(.collapsed) {
+  color: #893168
+}
+
+.accordion-flush .accordion-button:focus {
+  border-color: #dce6f3;
+  box-shadow: none
+}
+
+.accordion-flush .accordion-collapse {
+  border: 0
+}
+.accordion-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 1.5rem;
+  font-size: 1rem;
+  color: #424767;
+  background-color: transparent;
+  border: .0625rem solid #dce6f3;
+  border-radius: 0;
+  overflow-anchor: none;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, border-radius .15s ease
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .accordion-button {
+    transition: none
+  }
+}
+
+.accordion-button.collapsed {
+  border-bottom-width: 0
+}
+
+.accordion-button:not(.collapsed) {
+  color: #202944;
+  background-color: transparent
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23202944'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  transform: rotate(180deg)
+}
+
+.accordion-button::after {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23424767'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform .2s ease-in-out
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .accordion-button::after {
+    transition: none
+  }
+}
+
+.accordion-button:hover {
+  z-index: 2
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: #93a5be;
+  outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(36, 46, 76, .25)
+}
+
+.accordion-header {
+  margin-bottom: 0
+}
+
+.accordion-item:first-of-type .accordion-button {
+  border-top-left-radius: .45rem;
+  border-top-right-radius: .45rem
+}
+
+.accordion-item:last-of-type .accordion-button.collapsed {
+  border-bottom-width: .0625rem;
+  border-bottom-right-radius: .45rem;
+  border-bottom-left-radius: .45rem
+}
+
+.accordion-item:last-of-type .accordion-collapse {
+  border-bottom-width: .0625rem;
+  border-bottom-right-radius: .45rem;
+  border-bottom-left-radius: .45rem
+}
+
+.accordion-collapse {
+  border: solid #dce6f3;
+  border-width: 0 .0625rem
+}
+
+.accordion-body {
+  padding: 1.5rem 1.5rem
+}
+
+.accordion-flush .accordion-button {
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0
+}
+
+.accordion-flush .accordion-collapse {
+  border-width: 0
+}
+
+.accordion-flush .accordion-item:first-of-type .accordion-button {
+  border-top-width: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0
+}
+
+.accordion-flush .accordion-item:last-of-type .accordion-button.collapsed {
+  border-bottom-width: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0
+}
+.list-group-flush {
+  border-radius: 0
+}
+
+.list-group-flush>.list-group-item {
+  border-width: 0 0 .0625rem
+}
+
+.list-group-flush>.list-group-item:last-child {
+  border-bottom-width: 0
+}
+.text-turqueza {
+  color: #5bcfde !important
+}
+.text-gris {
+  color:  #9e9e9e !important
+}
+.text-rojo {
+  color:  #df5b69 !important
+}

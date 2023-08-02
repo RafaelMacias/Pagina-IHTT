@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="assets/js/jquery.noty.packaged.js"></script>
+
+<script type="text/javascript">
+   @@SCRIPT@@     
+</script>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>SATT - Login</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="title" content="Satt - Login">
+  <meta name="author" content="IHTT">
+  <meta name="description" content="Sistema Automatizado del Transporte Terrestre.">
+  <meta name="keywords" content="ihtt, IHTT, SATT, Instituto Hondureño de Transporte Terrestre">
+
+  <!--Iconos para el Favicon-->
+  <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+  <!-- <link rel="manifest" href="assets/img/favicon/site.webmanifest">
+  <link rel="mask-icon" href="assets/img/favicon/safari-pinned-tab.svg" color="#ffffff"> -->
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  <link type="text/css" href="vendor/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/jqvmap/dist/jqvmap.min.css">
+  <link type="text/css" href="assets/css/pixel.css" rel="stylesheet">
+  
+  <style>
+    .text-header {
+      font-size: 45px;
+      font-weight: bold;
+      color: #252e4ce0;
+    }
+  </style>
+
+</head>
+   <body>
+      <main>
+         <section class="min-vh-100 d-flex align-items-center section-image overlay-soft-dark" data-background="https://satt.transporte.gob.hn/assets/images/fondo3.png">
+            <div class="container">
+               <div class="row justify-content-center">
+                  <div class="col-12 d-flex align-items-center justify-content-center">
+                     <div class="signin-inner mt-3 mt-lg-0 bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500" style="background-color: #ffffffed!important;">
+                        <div class="text-center text-md-center mb-4 mt-md-0">
+                           <h1 class="mb-0 h3 text-header"><i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i>Iniciar sesión</h1>
+                          <!--  <h4 class="mb-0 h5" style="color: #54577e;">Sistema de Automatizaci&oacute;n del Transporte Terrestre</h4> -->
+                        </div>
+                        <form action="#" class="mt-4">
+                           <div class="form-group">
+                              <label for="exampleInputIcon3">Su usuario</label>
+                              <div class="input-group mb-4">
+                                 <div class="input-group-prepend"><span class="input-group-text"><span class="fas fa-envelope"></span></span></div>
+                                 <input class="form-control" name="nombre" id="nombre" placeholder="Usuario" type="text" aria-label="usuario">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="form-group">
+                                 <label for="exampleInputPassword6">Contraseña</label>
+                                 <div class="input-group mb-4">
+                                    <div class="input-group-prepend"><span class="input-group-text"><span class="fas fa-unlock-alt"></span></span></div>
+                                    <input class="form-control" name="password" id="password" placeholder="Contraseña" type="password" aria-label="Password" onkeypress="(event.keyCode == 13)?doLogin():true;" required>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- <button type="submit" class="btn btn-block btn-primary">Entrar</button> -->
+                            <a href="javascript:doLogin()" id="btnIngresar" class="btn btn-block btn-primary" style="display: block !important;">Entrar al sistema</a>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </main>
+     <!--  <script src="vendor/jquery/dist/jquery.min.js"></script> -->
+      <script src="vendor/popper.js/dist/umd/popper.min.js"></script>
+      <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="vendor/headroom.js/dist/headroom.min.js"></script>
+      <script src="vendor/onscreen/dist/on-screen.umd.min.js"></script>
+      <script src="vendor/nouislider/distribute/nouislider.min.js"></script>
+      <script src="vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+      <script src="vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+      <script src="vendor/waypoints/lib/jquery.waypoints.min.js"></script>
+      <script src="vendor/owl.carousel/dist/owl.carousel.min.js"></script>
+      <script src="vendor/jarallax/dist/jarallax.min.js"></script>
+      <script src="vendor/jquery.counterup/jquery.counterup.min.js"></script>
+      <script src="vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
+      <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+      <script src="vendor/prismjs/prism.js"></script>
+      <script src="vendor/vivus/dist/vivus.min.js"></script>
+      <script src="vendor/leaflet/dist/leaflet.js"></script>
+      <script src="vendor/chartist/dist/chartist.min.js"></script>
+      <script src="vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+      <script src="vendor/jqvmap/dist/jquery.vmap.min.js"></script>
+      <script src="vendor/jqvmap/dist/maps/jquery.vmap.usa.js"></script>
+      <script async defer="defer" src="https://buttons.github.io/buttons.js"></script>
+      <script src="assets/js/pixel.js"></script>
+
+      <script src="assets/js/global_script.js"></script>
+      <script src="assets/js/login.js"></script>
+   </body>
+</html>

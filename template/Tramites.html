@@ -1,0 +1,931 @@
+<link href="@@DIR@@css/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection"> 
+<style>
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 36px;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+a {
+   color: #9e9e9e !important
+}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+.github-big-icon {
+    position: absolute;
+    right: 150px;
+    top: 2px;
+}
+.github-big-icon span {
+    font-size: 400px;
+    opacity: .1;
+}
+/*@font-face {
+  font-family: 'Pluto Sans Regular';
+  src: url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.eot');
+  src: url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.eot?#iefix') format('embedded-opentype'),
+  url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.woff') format('woff'),
+  url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+div,p {
+  font-family: 'Pluto Sans Regular';
+  color: #9e9e9e;
+}*/
+</style>
+<div class="section section-lg" style="padding-top: 0rem;padding-bottom: 2rem;">
+   <div class="container">
+      <div class="row pt-5 pt-md-0">
+         <div class="col-12 col-md-4 d-none d-lg-block">
+            <div class="card border-light p-2">
+               <div class="card-header text-center">
+                  <div class="mx-auto">
+                     <img src="assets/img/Citas.svg" class="card-img-top border-white" alt="Joseph Portrait">
+                  </div>
+               </div>
+               <div class="card-body p-2">
+                  <div class="accordion" id="accordionExample1">
+                     <div class="card card-sm card-body border-light mb-0">
+                        <div href="#panel-1" data-target="#panel-1" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-1">
+                           <span class="h6 mb-0 font-weight-bold">Lo m&aacute;s consultado</span> 
+                           <span class="icon"><span class="fas fa-plus"></span></span>
+                        </div>
+                        <div class="collapse" id="panel-1">
+                           <div class="pt-3">
+                              {{TOPTRAMITES}}
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card card-sm card-body border-light mb-0">
+                        <div href="#panel-2" data-target="#panel-2" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-1">
+                           <span class="h6 mb-0 font-weight-bold">En L&iacute;nea</span> 
+                           <span class="icon"><span class="fas fa-plus"></span></span>
+                        </div>
+                        <div class="collapse" id="panel-2">
+                           <div class="pt-3">
+                              {{TRAMITESLINEA}}
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card card-sm card-body border-light mb-0">
+                        <div href="#panel-3" data-target="#panel-3" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-3">
+                           <span class="h6 mb-0 font-weight-bold">Externos</span> 
+                           <span class="icon"><span class="fas fa-plus"></span></span>
+                        </div>
+                        <div class="collapse" id="panel-3">
+                           <div class="pt-3">
+                              {{TRAMITESEXTERNOS}}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!--menu movil-->
+       <!--   <div class="col-12 d-lg-none">
+            <div class="card bg-white border-light mb-4 mb-lg-5">
+               <div class="card-body">
+                  <div class="row align-items-center">
+                     <div class="col-10 d-flex"><a href="account.html" class="list-group-item list-group-item-action border-0 active">Lo mas Consultado</a> <a href="settings.html" class="list-group-item list-group-item-action border-0">Settings</a> <a href="my-items.html" class="list-group-item list-group-item-action d-none d-sm-block border-0">My Items</a> <a href="security.html" class="list-group-item list-group-item-action d-none d-md-block border-0">Security</a></div>
+                     <div class="col-2 d-flex justify-content-center">
+                        <div class="btn-group dropleft">
+                           <button class="btn btn-link dropdown-toggle dropdown-toggle-split mr-2 m-0 p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="icon icon-sm"><span class="fas fa-ellipsis-h icon-secondary fa-lg"></span> </span><span class="sr-only">Toggle Dropdown</span></button>
+                           <div class="dropdown-menu"><a href="my-items.html" class="list-group-item list-group-item-action d-sm-none border-0">My Items</a> <a href="security.html" class="list-group-item list-group-item-action d-md-none border-0">Security</a> <a href="billing.html" class="list-group-item list-group-item-action border-0">Billing</a> <a href="messages.html" class="list-group-item list-group-item-action border-0">Messages</a></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div> -->
+         <!--contenido-->
+         <div class="col-12 col-lg-8">
+
+            <div class="row">
+
+               <div class="col-12 col-sm-12 mb-4">
+                  <div class="card text-center border-light" style="min-height: 25.2rem;">
+                     <h2 class="h1 mb-3 text-center"><i class="fas fa-search" style="margin-right: 5px;font-size: 4rem;line-height: 2;"></i>Haz tu Consulta</h2>
+                     <div class="card-header">
+                        <span class="card-text small" style="font-size: 95%;">
+                           <span class="fas fa-exclamation-circle mr-2" style="color: #21bfd6; font-size: 20px;"></span>
+                           Puedes realizar cualquier consulta sobre un tr&aacute;mite que deseas realizar en nuestra página web.
+                        </span>
+                        <div class="github-big-icon"><span class="fas fa-search"></span></div>
+                     </div>
+                     <div class="card-body">
+                        <form action="#">
+                           <div class="form-group bg-white shadow-soft rounded-pill mb-4 px-3 py-2" style="border: solid 1px #41476726;">
+                              <div class="row align-items-center">
+                                 <div class="col">
+                                    <div class="input-group input-group-merge shadow-none">
+                                       <div class="input-group-prepend"><span class="input-group-text bg-transparent border-0"><i class="fas fa-search"></i></span></div>
+                                       <input id="inputsearch" type="text" class="form-control border-0 form-control-flush shadow-none pb-2" placeholder="Ejem: Consulta Tr&aacute;mite..." required>
+                                    </div>
+                                 </div>
+                                 <div class="col-auto">
+                                    <button onclick="getURLTramite();" type="button" class="btn btn-block btn-light rounded-pill">Buscar</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+            
+         </div>
+      </div>
+   </div>
+</div>
+
+
+<div class="section section-lg" style="padding-top: 0rem;">
+   <div class="container">
+      <div class="row pt-5 pt-md-0">
+         <!--contenido-->
+         <div class="col-12 col-lg-12 d-none d-lg-block">
+
+            <div class="row">
+
+               <div class="col-12 col-sm-12 mb-4">
+                  <div class="card text-center border-light" style="min-height: 25.2rem;">
+                     <h2 class="h1 mb-3 text-center"><i class="fas fa-laptop" style="margin-right: 5px;font-size: 4rem;line-height: 2;"></i>Selecciona tu Tr&aacute;mite</h2>
+                     <div class="card-header">
+                        <span class="card-text small" style="font-size: 95%;">
+                           <span class="fas fa-exclamation-circle mr-2" style="color: #21bfd6; font-size: 20px;"></span>
+                           Puedes seleccionar el tr&aacute;mite que deseas realizar en nuestra página web.
+                        </span>
+                     </div>
+                     <div class="card-body">
+
+                        <div class="row">
+                          <!--Portal de noticias-->
+                          <div class="col-12 col-md-4 col-lg-4">
+                              <div class="rotating-card mb-2">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="far fa-newspaper mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Secci&oacute;n de Noticias</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <a class="btn btn-sm btn-light" href="/Noticias.php">Ingresar</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <!--portal de conductores-->
+                           <div class="col-12 col-md-4 col-lg-4">
+                              <div class="rotating-card mb-2">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="far fa-id-card mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Portal del Conductor</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <ul class="text-secondary" style="padding: 2px;text-align: left;">
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:122/REGISTRO/Ingreso_Operarios.php" target="_blank" style="color: #424aa0">Registo de Conductores.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:122/REGISTRO/Cupones_Pagados.php" target="_blank" style="color: #424aa0">Consulta de Operarios Pagados.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:122/REGISTRO/Red_Establecimientos.php" target="_blank" style="color: #424aa0">Consultas de Red de Establecimientos - Puntos de Canje.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:122/REGISTRO/Registro_Salvoconducto.php" target="_blank" style="color: #424aa0">Registro de las rutas autorizadas - Salvoconducto.
+                                                </a>
+                                             </li>
+                                          </ul>
+                                          <!-- <a class="btn btn-sm btn-light" href="#">Ir al Portal</a> -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <!--centro de documentos-->
+                           <div class="col-12 col-md-4 col-lg-4">
+                              <div class="rotating-card mb-2">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="far fa-file-pdf mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Centro de Documentos</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <ul class="text-secondary" style="padding: 2px;text-align: left;">
+                                             <li class="pb-2">Manuales.</li>
+                                             <li class="pb-2">Requisitos.</li>
+                                             <li class="pb-2">Acuerdos Ejecutivos.</li>
+                                             <li class="pb-2">Contrato de Concesiones.</li>
+                                             <li class="pb-2">Normativas.</li>
+                                          </ul>
+                                          <a class="btn btn-sm btn-light" href="/Centro_Documentos.php">Ir al Portal</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div><!--cierre row-->
+                        <br>
+
+                        <div class="row">
+
+                           <!--centro de atencion al ciudadano-->
+                           <div class="col-12 col-md-4 col-lg-4">
+                              <div class="rotating-card">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="fas fa-user-alt mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Atenci&oacute;n al Ciudadano</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <ul class="text-secondary" style="padding: 2px;text-align: left;">
+                                             <li class="pb-2">
+                                                <a href="#" target="_blank" style="color: #424aa0">PQRS/Denuncias.
+                                                </a>
+                                                <!--Enlace anterior https://pqrs.transporte.gob.hn/ -->
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://datosabiertos.transporte.gob.hn/" target="_blank" style="color: #424aa0">Datos Abiertos.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:122/RF/Ingreso_Datos_Financieros.php" target="_blank" style="color: #424aa0">Ingreso de Datos Financieros.
+                                                </a>
+                                             </li>
+                                          </ul>
+                                         <!--  <a class="btn btn-sm btn-light" href="#">Ir al Portal</a> -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <!--Portal de consultas-->
+                           <div class="col-12 col-md-4 col-lg-4">
+                              <div class="rotating-card mb-2">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="fas fa-search mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Portal de Consultas</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <ul class="text-secondary" style="padding: 2px;text-align: left;">
+                                             <li class="pb-2">
+                                                <a href="https://www.transporte.gob.hn/Consultas_Generales.php" target="_blank" style="color: #424aa0">Consultas Generales.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">Multas Pendientes.</li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:84/aviso_cobro_publico.php" target="_blank" style="color: #424aa0">Obligaciones Pendientes.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="#" target="_blank" style="color: #424aa0">Estad&iacute;sticas.
+                                                </a>
+                                                <!-- enlace que cambie http://satt.transporte.gob.hn:126/Portal/index.php -->
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:93/Portal/Inicio.aspx" target="_blank" style="color: #424aa0">Rutas.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:133/notificaciones.aspx" target="_blank" style="color: #424aa0">Notificaciones.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:155/ConsultaIP/consultaIP.html" target="_blank" style="color: #424aa0">Validaci&oacute;n Documentos IP.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:288/Consulta_Oficios.php" target="_blank" style="color: #424aa0">Diligencias Previas IP.
+                                                </a>
+                                             </li>
+                                          </ul>
+                                          <!-- <a class="btn btn-sm btn-light" href="#">Ir al Portal</a> -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <!--portales de usuarios-->
+                           <div class="col-12 col-md-4 col-lg-4">
+                              <div class="rotating-card mb-2">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="fas fa-users mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Portal del Usuario</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <ul class="text-secondary" style="padding: 2px;text-align: left;">
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:128/login.aspx" target="_blank" style="color: #424aa0">Portal del Aporderado Legal.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:127/login.aspx" target="_blank" style="color: #424aa0">Portal del Concesionario.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:239/Login.aspx" target="_blank" style="color: #424aa0">Usuario de Carga.
+                                                </a>
+                                             </li>
+                                          </ul>
+                                         <!--  <a class="btn btn-sm btn-light" href="#">Ir al Portal</a> -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div><!--cierre row-->
+                        <br>
+
+                        <div class="row">
+
+                           <!--portal covid-->
+                           <div class="col-12 col-md-4 col-lg-4">
+                              <div class="rotating-card">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="fas fa-virus mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Portal Covid-19</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <ul class="text-secondary" style="padding: 2px;text-align: left;">
+                                             <li class="pb-2"><a href="Protocolos_Covid.php" style="color: #424aa0">Protocolos.
+                                                </a></li>
+                                            <!--  <li class="pb-2">Boletines.</li> -->
+                                             <li class="pb-2">
+                                                <a href="https://register.gotowebinar.com/register/3713230394699243788" target="_blank" style="color: #424aa0">Seminario web.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:122/RCB/login.php" target="_blank" style="color: #424aa0">Registro de Solicitantes.
+                                                </a>
+                                             </li>
+                                          </ul>
+                                          <!-- <a class="btn btn-sm btn-light" href="#">Ir al Portal</a> -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div><!--cierre row-->
+
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+
+
+         </div><!--cierre tramites pantalla completa-->
+
+         <!--TARJETAS MOVIL-->
+         <div class="col-12 col-lg-12 d-lg-none">
+
+            <div class="row">
+
+               <div class="col-12 col-sm-12 mb-4">
+                  <div class="card text-center border-light" style="min-height: 25.2rem;">
+                     <h2 class="h1 mb-3 text-center"><i class="fas fa-laptop" style="margin-right: 5px;font-size: 4rem;line-height: 2;"></i>Selecciona tu Tr&aacute;mite</h2>
+                     <div class="card-header">
+                        <span class="card-text small" style="font-size: 95%;">
+                           <span class="fas fa-exclamation-circle mr-2" style="color: #21bfd6; font-size: 20px;"></span>
+                           Puedes seleccionar el tr&aacute;mite que deseas realizar en nuestra página web.
+                        </span>
+                     </div>
+                     <div class="card-body">
+
+                        <div class="row">
+
+                          <!--Portal de noticias-->
+                          <div class="col-12 col-md-6 col-lg-6">
+                              <div class="rotating-card mb-2">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="far fa-newspaper mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Secci&oacute;n de Noticias</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <a class="btn btn-sm btn-light" href="/Noticias.php">Ingresar</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <!--portal de conductores-->
+                           <div class="col-12 col-md-6 col-lg-6">
+                              <div class="rotating-card mb-2">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="far fa-id-card mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Portal del Conductor</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <ul class="text-secondary" style="padding: 2px;text-align: left;">
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:122/REGISTRO/Ingreso_Operarios.php" target="_blank" style="color: #424aa0">Registo de Conductores.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:122/REGISTRO/Cupones_Pagados.php" target="_blank" style="color: #424aa0">Consulta de Operarios Pagados.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:122/REGISTRO/Red_Establecimientos.php" target="_blank" style="color: #424aa0">Consultas de Red de Establecimientos - Puntos de Canje.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:122/REGISTRO/Registro_Salvoconducto.php" target="_blank" style="color: #424aa0">Registro de las rutas autorizadas - Salvoconducto.
+                                                </a>
+                                             </li>
+                                          </ul>
+                                          <!-- <a class="btn btn-sm btn-light" href="#">Ir al Portal</a> -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div><!--cierre row-->
+                        <br>
+
+                        <div class="row">
+
+                          <!--centro de documentos-->
+                           <div class="col-12 col-md-6 col-lg-6">
+                              <div class="rotating-card mb-2">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="far fa-file-pdf mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Centro de Documentos</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <ul class="text-secondary" style="padding: 2px;text-align: left;">
+                                             <li class="pb-2">Manuales.</li>
+                                             <li class="pb-2">Requisitos.</li>
+                                             <li class="pb-2">Acuerdos Ejecutivos.</li>
+                                             <li class="pb-2">Contrato de Concesiones.</li>
+                                             <li class="pb-2">Normativas.</li>
+                                          </ul>
+                                          <a class="btn btn-sm btn-light" href="/Centro_Documentos.php">Ir al Portal</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <!--centro de atencion al ciudadano-->
+                           <div class="col-12 col-md-6 col-lg-6">
+                              <div class="rotating-card">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="fas fa-user-alt mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Atenci&oacute;n al Ciudadano</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <ul class="text-secondary" style="padding: 2px;text-align: left;">
+                                             <li class="pb-2">
+                                                <a href="#" target="_blank" style="color: #424aa0">PQRS/Denuncias.
+                                                </a>
+                                                <!-- enlace anterior https://pqrs.transporte.gob.hn/ -->
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://datosabiertos.transporte.gob.hn/" target="_blank" style="color: #424aa0">Datos Abiertos.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:122/RF/Ingreso_Datos_Financieros.php" target="_blank" style="color: #424aa0">Ingreso de Datos Financieros.
+                                                </a>
+                                             </li>
+                                          </ul>
+                                         <!--  <a class="btn btn-sm btn-light" href="#">Ir al Portal</a> -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div><!--cierre row-->
+                        <br>
+
+                        <div class="row">
+
+                          <!--Portal de consultas-->
+                           <div class="col-12 col-md-6 col-lg-6">
+                              <div class="rotating-card mb-2">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="fas fa-search mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Portal de Consultas</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <ul class="text-secondary" style="padding: 2px;text-align: left;">
+                                             <li class="pb-2">
+                                                <a href="https://www.transporte.gob.hn/Consultas_Generales.php" target="_blank" style="color: #424aa0">Consultas Generales.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">Multas Pendientes.</li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:84/aviso_cobro_publico.php" target="_blank" style="color: #424aa0">Obligaciones Pendientes.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="http://satt.transporte.gob.hn:126/Portal/index.php" target="_blank" style="color: #424aa0">Estad&iacute;sticas.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:93/Portal/Inicio.aspx" target="_blank" style="color: #424aa0">Rutas.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:133/notificaciones.aspx" target="_blank" style="color: #424aa0">Notificaciones.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:155/ConsultaIP/consultaIP.html" target="_blank" style="color: #424aa0">Validaci&oacute;n Documentos IP.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:288/Consulta_Oficios.php" target="_blank" style="color: #424aa0">Diligencias Previas IP.
+                                                </a>
+                                             </li>
+                                          </ul>
+                                          <!-- <a class="btn btn-sm btn-light" href="#">Ir al Portal</a> -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <!--portales de usuarios-->
+                           <div class="col-12 col-md-6 col-lg-6">
+                              <div class="rotating-card mb-2">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="fas fa-users mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Portal del Usuario</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <ul class="text-secondary" style="padding: 2px;text-align: left;">
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:128/login.aspx" target="_blank" style="color: #424aa0">Portal del Aporderado Legal.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:127/login.aspx" target="_blank" style="color: #424aa0">Portal del Concesionario.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:239/Login.aspx" target="_blank" style="color: #424aa0">Usuario de Carga.
+                                                </a>
+                                             </li>
+                                          </ul>
+                                         <!--  <a class="btn btn-sm btn-light" href="#">Ir al Portal</a> -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div><!--cierre row-->
+                        <br>
+
+                        <div class="row">
+
+                          <!--portal covid-->
+                           <div class="col-12 col-md-6 col-lg-6">
+                              <div class="rotating-card">
+                                 <div class="card border-light card-rotate p-5">
+                                    <div class="front text-center">
+                                      <span class="fas fa-virus mr-2 card-img-top rounded-circle border-primary" style="font-size: 7rem;"></span>
+                                       <div class="card-body">
+                                          <h3 class="h4 card-title">Portal Covid-19</h3>
+                                       </div>
+                                    </div>
+                                    <div class="back text-center">
+                                       <div class="card-body p-5">
+                                          <ul class="text-secondary" style="padding: 2px;text-align: left;">
+                                             <li><a href="Protocolos_Covid.php" style="color: #424aa0">Protocolos.
+                                                </a></li>
+                                             <!-- <li class="pb-2">Boletines.</li> -->
+                                             <li class="pb-2">
+                                                <a href="https://register.gotowebinar.com/register/3713230394699243788" target="_blank" style="color: #424aa0">Seminario web.
+                                                </a>
+                                             </li>
+                                             <li class="pb-2">
+                                                <a href="https://satt.transporte.gob.hn:122/RCB/login.php" target="_blank" style="color: #424aa0">Registro de Solicitantes.
+                                                </a>
+                                             </li>
+                                          </ul>
+                                          <!-- <a class="btn btn-sm btn-light" href="#">Ir al Portal</a> -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div><!--cierre row-->
+
+
+
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+
+
+            
+         </div><!--cierre tramites pantalla pequeña-->
+
+
+
+
+
+      </div>
+   </div>
+</div>
+
+<script>
+//Funcion para recuperar la url del tramite
+function getURLTramite() {
+
+   if($("#inputsearch").val().trim().length<1){
+      toastwarning("No has seleccionado ningun tramite");
+      return;
+   }
+   postdata = {
+      action: "get-url-tramite",
+      url: $('#inputsearch').val()
+   }
+   $.post( "Api_PW.php", postdata, null, "json" )
+      .done(function( datos, textStatus, jqXHR ) {
+         var url = datos[0];
+         if(datos[1]>0){
+            URLTramite(url[0].Link_Tramite);
+            //Datos para insert
+            var id = url[0].ID_Tramite;
+            var tipo = url[0].Tipo_Tramite;
+            InsertBitacoraTramites(id,tipo);  
+         }
+   })
+   .fail(function( jqXHR, textStatus, errorThrown ) {
+      if ( console && console.log ) {
+         swal({
+           type: 'error',
+           title: '!Error¡',
+           text: 'Error al obtener la url del tramite seleccionado',
+        })
+      }
+  });
+}
+//Redireccion del tramite
+function URLTramite(id) {
+   window.open(id, '_blank');
+}
+
+//Funcion para guardar cada consulta que haga
+function InsertBitacoraTramites(id,tipo) {
+
+    var form_data = new FormData();
+    form_data.append("action","insert-bitacora-tramites");
+    //----Datos del certificado
+    form_data.append("idtramite",id);
+    form_data.append("desctramite",$('#inputsearch').val());
+    form_data.append("tipotramite",tipo);
+
+    fetch("Api_PW.php",
+    {
+      method: "POST",
+      body: form_data
+    })
+      .then((resp) => resp.json())
+      .then(Data=>{
+        if (Data.status==1) {
+         $("#inputsearch").val("");
+          // swal({
+          //       title: "La placa se modificó correctamente.",
+          //       // text: "Su Observación: " + Observacion,
+          //       type: "success",
+          //       html:true,
+          //       showCancelButton: false,
+          //       closeOnConfirm: true,
+          //       showLoaderOnConfirm: true
+          //     }, function () {
+          //         actualizar();
+          // });
+          // $("#contenthome").removeClass("a");
+          // $("#contenthome").addClass("m");
+        }else {
+          sweetAlert("!ATENCIÓN¡",Data.status, "error");
+        }
+      })
+    .catch(err=>{ console.log(err); });
+}
+
+
+</script>
+
+
+<script>
+//Funcion para el autocomplete del input
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+/*An array containing all the country names in the world:*/
+var tramites = [@@TRAMITES@@];
+
+/*initiate the autocomplete function on the "inputsearch" element, and pass along the countries array as possible autocomplete values:*/
+autocomplete(document.getElementById("inputsearch"), tramites);
+</script>

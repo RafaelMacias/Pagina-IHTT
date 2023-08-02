@@ -1,0 +1,142 @@
+<link href="@@DIR@@css/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection"> 
+<style>
+.sweet-alert {
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #424aa07a !important;
+  border-width: 5px
+}
+
+.m .sweet-overlay {
+  background-color: rgba(0, 188, 212, 0.27)
+}
+
+.a .sweet-overlay {
+  background-color: rgba(239, 67, 13, 0.45)
+}
+.col-center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto
+}
+.content{
+overflow: hidden;
+width: 25rem;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical
+}
+.content2{
+ text-overflow: ellipsis;
+  overflow: hidden; 
+  width: 25rem; 
+  height: 1.2em; 
+  white-space: nowrap;
+  -webkit-line-clamp: 3;
+-webkit-box-orient: vertical
+}
+.owl-theme .owl-nav {
+  margin-top: -1.75rem !important
+}
+.github-big-icon {
+  position: absolute;
+  right: 150px;
+  top: 2px;
+}
+.github-big-icon span {
+    font-size: 400px;
+    opacity: .1;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+<div class="section section-lg" style="padding-top: 0rem;padding-bottom: 2rem;">
+  <div class="container">
+     <h2 class="h3 text-center text-lg-left mb-5" style="font-size: 3rem">Noticias Recientes</h2>
+      <div class="table-responsive mailbox-messages d-none d-lg-block" id="sol">
+        <table class="table table-hover table-striped">
+          <thead>
+            <!-- <tr>d-lg-none
+              <th colspan="4" style="border-top: none;">
+                <h6 class="text-secondary" id="resultMsg_sol"></h6></th>
+            </tr> -->
+            <tr>
+              
+                @@ARTICULOS@@
+              
+              
+             <!--  <th colspan="6" style="text-align: center;" class="bg-greylight" data-field="Fecha Creación">Procesos a Generar
+              </th> -->
+
+            </tr>
+            
+              @@RECIENTES@@
+
+          </thead>
+        </table>
+        <div class="row">
+              <div class="col-12 col-md-6 col-lg-12">
+                <a href="Lista_Noticias.php" style="width: 100%;color:white;" class="btn mb-2 mr-2 btn-light animate-up-2" type="button">Ver m&aacute;s noticias</a>
+              </div>
+            </div>
+
+        <!-- /.table -->
+      </div>
+
+      <!--Tarjetas moviles-->
+      <div class="d-lg-none">
+
+        @@MOBILES@@
+
+        <div class="row">
+              <div class="col-12 col-md-6 col-lg-12">
+                <a href="Lista_Noticias.php"  style="width: 100%" class="btn mb-2 mr-2 btn-light animate-up-2" type="button">Ver m&aacute;s noticias</a>
+              </div>
+            </div>
+
+        <!-- /.table -->
+      </div>
+
+
+
+
+
+
+
+
+  </div>
+</div>
+
+<script>
+//Funcion de insert las vistas
+function saveVistasPublicacion(id) {
+
+   var form_data = new FormData();
+   form_data.append("action","save-vistas-publicacion");
+   //Datos para el insert del like
+   form_data.append("idpublicacion", id);
+  
+   fetch("Api_PW.php",
+    {
+      method: "POST",
+      body: form_data
+    })
+      .then((resp) => resp.json())
+      .then(Data=>{
+         if (Data.status==1) {
+            actualizar();
+         }else {
+            sweetAlert("!ATENCIÓN¡",Data.status, "error");
+         }
+      })
+    .catch(err=>{ console.log(err); });
+}
+function actualizar(){
+  window.location.reload(true);
+}
+</script>
+

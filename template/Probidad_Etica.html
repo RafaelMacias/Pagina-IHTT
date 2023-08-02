@@ -1,0 +1,305 @@
+<style>
+.btn-icon-only {
+  width: 3.0rem;
+  height: 3.0rem;
+  padding: 0
+}
+.btn-size-icon {
+  font-size: 25px
+}
+.col-center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto
+}
+hr {
+    margin-top: 0.0rem;
+    margin-bottom: 1.5rem;
+    border: 0;
+    border-top: 0.2rem solid #6FADDC;
+}
+p {
+  text-align: justify
+}
+/*--Nuevo--*/
+.main {
+  position: relative;
+}
+.outer-mask {
+  position: absolute;
+  left: 0px;
+  top: -70px;
+  width: 450px;
+  height: 110px;
+  overflow: hidden;
+  -webkit-transform: skew(0deg, 0deg);
+      -ms-transform: skew(0deg, 0deg);
+       -o-transform: skew(0deg, 0deg);
+          transform: skew(0deg, 0deg);
+}
+.inner-mask {
+  position: absolute;
+  left: -45px;
+  top: 14px;
+  width: 450px;
+  height: 110px;
+  overflow: hidden;
+  -webkit-transform: skew(-40deg, 0deg);
+      -ms-transform: skew(-40deg, 0deg);
+       -o-transform: skew(-40deg, 0deg);
+          transform: skew(-40deg, 0deg);
+}
+.content {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 450px;
+  height: 56px;
+  background-color: #3a3d77;
+  background-image: -webkit-linear-gradient(left, #00B7E8, #023A8F);
+  background-image:    -moz-linear-gradient(left, #00B7E8, #023A8F);
+  background-image:     -ms-linear-gradient(left, #00B7E8, #023A8F);
+  background-image:      -o-linear-gradient(left, #00B7E8, #023A8F);
+  background-image:         linear-gradient(left, #00B7E8, #023A8F);
+}
+#shape-notas-text {
+  position: absolute;
+  top: 7px;
+  left: 30px;
+  font-size: 25px;
+  font-weight: 900;
+  color: white;
+  /*transform: rotate(180deg);*/
+  transform: skew( 39deg , 0deg );
+}
+.texto-titulo {
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+.github-big-icon {
+  position: absolute;
+  right: 19px;
+  top: 385px;
+}
+.github-big-icon span {
+    font-size: 400px;
+    opacity: .1;
+}
+.github-big-img {
+  position: absolute;
+  right: 19px;
+  top: 190px;
+}
+.github-big-img img {
+    font-size: 400px;
+    opacity: .1;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0e121d;
+    border-color: #9e9e9e
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    color: #fff;
+    background-color: #0e121d;
+    border-color: #f5f5f5;
+    /*box-shadow: 0 .125rem .25rem rgba(23, 31, 56, .075), 0 0 0 .25rem rgba(69, 77, 103, .5)*/
+}
+.btn-descarga {
+  background-image: -webkit-linear-gradient(left, #00B7E8, #023A8F);
+  border-color: #f5f5f5
+}
+.plan-trabajo-text1 {
+  color: #00598f;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 0;
+  margin-top: -8px;
+  margin-bottom: 27px
+}
+.plan-trabajo-text1-movil {
+  color: #00598f;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 0;
+  margin-top: -8px;
+  margin-bottom: 27px
+}
+#plan-trabajo-text {
+  position: absolute;
+  top: 80px;
+  left: 65px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #00598f;
+  background: white;
+}
+#plan-trabajo-text-movil {
+  position: absolute;
+  top: 74px;
+  left: 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #00598f;
+  background: white;
+}
+.color-hr {
+  border: 0;   /* in order to override TWBS stylesheet */
+  height: 6px;
+  float: left;
+  width: 79%;
+  background: -webkit-linear-gradient(left, rgba(0,89,143,1) 0%, rgba(0,89,143,1) 65%,  rgba(1,144,61,1) 86.5%, rgba(1,144,61,1) 86.5%, rgba(231,31,115,1) 80.5%, rgba(231,31,115,1) 80.5%, rgba(231,31,115,1) 93%, rgba(248,169,15,1) 62.5%, rgba(248,169,15,1) 62.5%); /* Chrome10+,Safari5.1+ */
+  
+}
+.hr-text {
+  font-size: 2.5rem;
+  line-height: 0;
+  font-weight: 900;
+  color: #00598f;
+}
+@font-face {
+font-family: 'Pluto Sans Regular';
+src: url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.eot');
+src: url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.eot?#iefix') format('embedded-opentype'),
+url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.woff') format('woff'),
+url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+.box-name {
+  font-family: 'Pluto Sans Regular';
+}
+</style>
+<section class="section py-5">
+   <div class="container z-2" >
+      <div class="row position-relative justify-content-center align-items-cente">
+        <!-- <div class="col-12 col-lg-12 mb-7">
+            <img class="d-lg-inline-block shadow" style="border-radius: 20px;" src="assets/img/comite-de-etica.png" alt="Mobile App Illustration">
+        </div> -->
+        <!--Contenido Nota de Prensa Desktop-->
+        <!-- <div class="col-12 mb-5">
+          <div class="main mb-4 d-none d-lg-block">
+              <div class="outer-mask">
+                  <div class="inner-mask">
+                      <div class="content"><span id="shape-notas-text">NOTA DE PRENSA | COM-FO-1 V1</span></div>
+                  </div>
+              </div> -->
+          </div >
+          <!--Contenido Nota de Prensa Movil-->
+          <!-- <div class="main mb-4 d-lg-none">
+              <div class="outer-mask">
+                  <div class="inner-mask">
+                      <div class="content" style="width: 355px;"><span id="shape-notas-text" style="font-size: 18px;">NOTA DE PRENSA | COM-FO-1 V1</span></div>
+                  </div>
+              </div>
+          </div>
+          <p class="texto-titulo">IHTT elige el nuevo Comité de Probidad y Ética 2021-2023</p>
+          <hr style="background: #6FADDC;height: 3px;">
+          <p>-<i>El nuevo Comité está integrado por cinco servidores públicos con principios éticos y valores.</i></p>
+          <p><strong>Tegucigalpa, 23 de junio de 2021</strong>. El Instituto Hondureño de Transporte Terrestre (IHTT), tiene nuevo Comité de Probidad y Ética, luego de un proceso electivo que se desarrolló con transparencia y civismo, resultando ganador la planilla 2, Juntos al Cambio.</p>
+          <p>En el acto inaugural del proceso de elecciones, el Comisionado Presidente, Rafael Ruiz, manifestó que “Este comité, estará encargado de promover el cumplimiento de las normas de conducta ética”. Puntualizó que todo funcionario tiene el deber de servir y no servirse.</p>
+          <p>Nuevo Comité<br>El nuevo Comité quedó integrado por: presidenta Ana Cayetano, secretario Héctor Sánchez, vocal 1, Jorge Roque; vocal 2, Rubí García; y vocal 3, Gerardo Archaga.</p>
+          <p>Proceso electivo<br>En la elección participaron los empleados de forma presencial, pero bajo estrictas medidas de bioseguridad.</p>
+          <p>El proceso, de elección estuvo a cargo de la Comisión Coordinadora, quienes realizaron las gestiones para la elección del nuevo Comité de Probidad y Ética 2021-2023.</p>
+          <p>Los servidores públicos del IHTT, eligieron entre las dos planillas, que participaron, sin dudar del profesionalismo y compromiso de los participantes.</p>
+          <p>Durante la elección se observó compañerismo, colaboración y fraternidad y sobre todo un proceso transparente.</p>
+          <p>El nuevo Comité de Probidad y Ética es una instancia a través de la cual los empleados podrán acceder a cualquier consulta, dilemas, denunciar contravenciones a las normas éticas vigentes y sugerir ajustes a las normas éticas.</p>
+          <p>La presidenta electa Ana Cayetano, manifestó que estar contenta y agradecida por la confianza de los compañeros de las diferentes áreas, por haberme elegido como presidente del Comité de Probidad y Ética.<br>Asimismo, anunció que se pondrá en práctica el plan de trabajo que está elaborado con el objetivo que entre el personal se fortalezcan las conductas de ética y honestidad y así se vea reflejado en el servicio y atención a los usuarios y concesionarios.</p>
+          <div class="github-big-icon"><span class="far fa-sticky-note"></span></div>
+        </div> -->
+
+        <!--Contenido Plan de Trabajo-->
+        <div class="col-12 mb-5">
+         <!--  <div class="main mb-4 mt-4">
+              <div class="outer-mask">
+                  <div class="inner-mask">
+                      <div class="content"><span id="shape-notas-text">NOTA DE PRENSA | COM-FO-1 V1</span></div>
+                  </div>
+              </div>
+          </div> -->
+          <!-- <p class="texto-titulo">Plan de Trabajo</p> -->
+          <hr class="mb-6" style="background: #6FADDC;height: 3px;">
+          <!-- <p><strong>Año:</strong> 2021</p> -->
+
+
+          <div class="row">
+
+            <div class="col-12 col-lg-1"></div>
+
+            <!--Contenido Nota de Prensa Desktop-->
+            <div class="col-12 col-lg-6 d-none d-lg-block">
+              <div class="card border-light mb-4" style="border-radius: 10px;border-color: #00598f!important;">
+                <div class="card-body text-center text-md-left" style="padding: 0rem;">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <h2 class="mb-3 text-center" style="color: #00598f;font-size: 3rem;">Plan de Trabajo</h2>
+                            <p class="text-center plan-trabajo-text1">Comit&eacute; de Probidad y &Eacute;tica del</p>
+                            <p class="text-center" id="plan-trabajo-text">
+                              Instituto Hondureño del Transporte Terrestre
+                            </p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <span class="hr-text"><hr class="color-hr"><i>2021</i></span>
+            </div>
+
+            <!--Contenido Nota de Prensa Movil-->
+            <div class="col-12 col-lg-6 d-lg-none mb-5">
+              <div class="card border-light mb-4" style="border-radius: 10px;border-color: #00598f!important;">
+                <div class="card-body text-center text-md-left" style="padding: 0rem;">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <h2 class="mb-3 text-center" style="color: #00598f;font-size: 2.5rem;">Plan de Trabajo</h2>
+                            <p class="text-center plan-trabajo-text1-movil">Comit&eacute; de Probidad y &Eacute;tica del</p>
+                            <p class="text-center" id="plan-trabajo-text-movil">
+                              Instituto Hondureño del Transporte Terrestre
+                            </p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <span class="hr-text"><hr class="color-hr" style="width: 70%;"><i>2021</i></span>
+            </div>
+
+            <!--Contenido Nota de Prensa Desktop-->
+            <div class="col-12 col-md-5 d-none d-lg-block" style="margin-top: -3.5rem!important;">
+              <img src="assets/img/comite-etica.png" alt="" style="max-width: 56%;">
+            </div>
+
+            <!--Contenido Nota de Prensa Movil-->
+           <!--  <div class="col-12 col-md-5 d-lg-none" style="margin-top: -3.5rem!important;">
+              <img src="assets/img/comite-etica.png" alt="" style="max-width: 56%;">
+            </div> -->
+
+
+          <div class="github-big-img d-lg-none"><img src="assets/img/comite-etica.png" alt=""></div>
+
+          </div><!--Cierre del row-->
+
+
+          <p class="mb-6" style="color: #00598f"><span style="color: #00598f;font-weight: 900;">Objetivo General: </span>Promover condiciones para cada servidor p&uacute;blico del Instituto Hondureño del Transporte Terrestre desempeñe sus funciones con honestidad, integridad y responsabilidad de acuerdo a las leyes, reglamentos y dem&aacute;s normas vigentes en coordinaci&oacute;n con la direcci&oacute;n de probidad y &eacute;tica del tribunal superior de cuenta.</p>
+
+     <!--      <div class="col-12 col-md-12 mb-4" style="margin-top: -3.5rem!important;">
+            <img src="assets/img/fondo-7.png" alt="">
+          </div> -->
+
+          <!-- <div class="col-12 col-md-2 col-center">
+            <a href="assets/Documentos/PLAN_DE_PROBIDAD_Y_ETICA_DEL_IHTT ACTUALIZADO.pdf" target="_blank" class="btn btn-primary btn-descarga shadow">
+              <span class="mr-1"><i class="far fa-file-pdf"></i></span>Descargar
+            </a>
+            
+
+          </div> -->
+        
+          
+
+        </div>
+      
+      
+      </div>
+   </div>
+</section>

@@ -1,0 +1,355 @@
+<link href="@@DIR@@css/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection"> 
+<style>
+.left {
+  float: left;
+  margin-right: 1em;
+}
+
+.right {
+  float: right;
+  margin-left: 1em;
+}
+
+.col-center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.m .sweet-overlay {
+  background-color: rgba(0, 188, 212, 0.27)
+}
+
+.a .sweet-overlay {
+  background-color: rgba(239, 67, 13, 0.45)
+}
+
+.sweet-alert {
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #424aa07a !important;
+  border-width: 5px
+}
+
+
+/* Styling for Pen, unrelated to float */
+
+
+article {
+  background-color: white;
+  padding: 1em;
+  width: 100%;
+  margin: 0 auto;
+}
+figure {
+  text-align: center;
+  /*text-transform: uppercase;*/
+  padding: .2em;
+  margin: 0;
+}
+
+figure img {
+  max-width: 100%;
+}
+
+@media all and (max-width: 1100px) {
+  article {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 950px) {
+  article {
+    width: 95%;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+.edit-icon {
+   font-size: 25px; 
+   color: #893168; 
+   cursor: pointer
+}
+
+.edit-icon-2 {
+   font-size: 13px; 
+   color: #893168; 
+   cursor: pointer
+}
+</style>
+<section class="section section-lg pt-0">
+   <div class="container z-2">
+      <div class="row justify-content-center">
+         <div class="col">
+            <div class="card border-light p-4 p-lg-5">
+               <h1 class="text-turqueza" style="text-align: center;font-size: 3.0rem"><i @@MODTITULO@@></i>@@TITULO@@</h1>
+               <div class="d-flex align-items-center mt-3">
+                  <img class="avatar avatar-sm rounded-circle" src="{{IMGESCRITOR}}" alt="Richard avatar">
+                  <h3 class="h6 small ml-2 mb-0 text-gris">{{NOMBREESCRITOR}}</h3>
+                  <span class="h6 text-muted small font-weight-normal mb-0 ml-auto text-gris">
+                     <time><i @@MODFECHA@@></i>{{FECHAPUBLICACION}}</time>
+                  </span>
+               </div>
+               <article>
+                 @@FIGURE@@
+                 <br>
+                 @@DESCPLU@@
+               </article>
+
+               <input value="@@IDPUBLICACION@@" id="idpublicacion" type="hidden" class="form-control" disabled="">
+               <input value="@@IDIMAGEN@@" class="form-control" id="idimagen" type="hidden" disabled="">
+               <input value="@@NOMBREIMAGEN@@" class="form-control" id="nomimagen" type="hidden" disabled="">
+               <input value="@@DESCTIPO@@" class="form-control" id="desctipo" type="hidden" disabled="">
+
+               @@ELIMINAR@@
+
+               @@PIEPAGINA@@
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!--Modal de correo-->
+<!-- <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-body p-0">
+            <div class="card border-light p-4">
+               <div class="card-header text-center pb-0">
+                  <h2 class="h4">Dejanos tu Comentario</h2>
+                  <span>Escribe tu correo y comentario en las casillas correspondientes.</span>
+               </div>
+               <div class="card-body">
+                  <form action="#" class="mt-4">
+                     <div class="form-group">
+                        <label for="correo">Tu correo electr&oacute;nico *</label>
+                        <div class="input-group mb-4">
+                           <div class="input-group-prepend"><span class="input-group-text"><span class="fas fa-envelope"></span></span></div>
+                           <input class="form-control" id="correo" placeholder="example@company.com" type="text" aria-label="email adress">
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-12 col-lg-12">
+                           <div class="form-group">
+                              <label for="comentario">Tu comentario *</label>
+                              <textarea class="form-control" id="comentario" rows="4"></textarea>
+                           </div>
+                        </div>
+                     </div>
+                     <button onclick="confirmar_enviar_correo()" type="button" class="btn btn-block btn-primary">¡Enviar correo!</button>
+                  </form>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div> -->
+
+<!--Modal de modificaciones-->
+<div class="modal fade" id="modal-modificaciones" tabindex="-1" role="dialog" aria-labelledby="modal-modificaciones" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-body p-0">
+            <div class="card border-light p-4">
+               <div class="card-header text-center pb-0">
+                  <h2 class="h4"><div id="titlemodal"></div></h2>
+                  <span id="subtitle"></span>
+                  <hr style="margin-bottom: 0;">
+               </div>
+               <div class="card-body">
+                  <!--Modificar el titulo-->
+                  <form action="#" class="mt-4" style="display:none;" id="modtitulo">
+                     <div class="row">
+                        <div class="col-12 col-lg-12">
+                           <div class="form-group">
+                              <label for="titulo">Titulo *</label>
+                              <textarea class="form-control" id="titulo" rows="4"></textarea>
+                           </div>
+                        </div>
+                     </div>
+                     <button id="guardar_titulo" onclick="confirmarUpdateTitulo()" type="button" class="btn btn-block btn-primary">¡Modificar!</button>
+                  </form>
+                  <!--Modificar la fecha-->
+                  <form action="#" class="mt-4" style="display:none;" id="modfecha">
+                     <div class="row">
+                        <div class="col-12 col-lg-12">
+                           <div class="form-group text-left">
+                             <label for="fechaplu" style="margin-bottom: .6rem;">Fecha publicaci&oacute;n *</label>
+                             <div class="input-group mb-4">
+                                 <div class="input-group-prepend"><span class="input-group-text"><span class="far fa-calendar-alt"></span></span>
+                                 </div>
+                                  <input class="form-control datepicker" id="fechaplu" placeholder="Seleccionar fecha" type="text" aria-label="Date with icon left">
+                             </div>
+                           </div>
+                        </div>
+                     </div>
+                     <button id="guardar_fecha" onclick="confirmarUpdateFecha()" type="button" class="btn btn-block btn-primary">¡Modificar!</button>
+                  </form>
+                  <!--Modificar cuando no existe imagen-->
+                  <form action="#" class="mt-4" style="display:none;" id="modimagen">
+
+                     <div class="row">
+                        <div class="col-12 col-lg-12">
+                           <div class="form-group">
+                              <label for="nombreimg">Nombre de la imagen *</label>
+                              <textarea class="form-control" id="nombreimg" rows="4"></textarea>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-12 col-lg-12">
+                           <div class="form-group text-left">
+                              <label for="EscaneoSolicitud">Cargar imagen</label>
+                              <div class="custom-file">
+                                 <input onchange="CargaImgPublicacion();" type="file" class="custom-file-input" id="EscaneoSolicitud" aria-label="File upload"> 
+                                 <label class="custom-file-label" for="EscaneoSolicitud">Seleccionar la imagen que desea utilizar</label>
+                                 <input type="hidden" id="ArchivoTemporal" value="0">
+                              </div>
+                           </div>
+                        </div>
+                        <input id="idimagen" type="hidden" class="form-control" disabled="">
+                     </div>
+
+
+                     <div class="row">
+                        <div id="tarimagen" class="col-12 col-md-6 col-lg-6 col-center" style="display: none;">
+                           <div class="card border-0 text-center">
+                              <div class="card-header border-0 bg-white"><img src="" class="card-img-top rounded shadow border-0" alt="James Portrait" id="preview"></div>
+                              <div class="card-body">
+                                 <h3 class="h4 card-title" style="margin-top: -20px;"><div id="nombreimagen"></div></h3>
+                                 <ul class="list-unstyled d-flex justify-content-center mt-3 mb-0">
+                                    <li>
+                                       <button onclick="getIdImagen();" class="btn btn-pill btn-danger" type="button">
+                                         <span class="far fa-trash-alt"></span>
+                                       </button>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <button id="guardar_imagen" onclick="confirmarUpdateImagen()" type="button" class="btn btn-block btn-primary">¡Modificar!</button>
+                  </form>
+                  <!--Modificar imagen que ya existe-->
+                  <form action="#" class="mt-4" style="display:none;" id="modimagencreada">
+                   <!--   <div class="row">
+                       <div class="col-12 col-lg-12">
+                           <div class="form-group text-left">
+                              <label class="my-1 mr-2" for="posimagencreada" style="margin-bottom: .50rem!important;">Seleccionar aliniaci&oacute;n de la imagen *</label>
+                              <select class="custom-select my-1 mr-sm-2 select2bs4" id="posimagencreada" style="width: 100%;">
+                                 <option value="-1" disabled selected>Seleccione aliniaci&oacute;n</option>
+                                 <option value="I">Izquierda</option>
+                                 <option value="C">Centro</option>
+                                 <option value="D">Derecha</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div> -->
+
+                     <!-- <div class="row">
+                        <div class="col-12 col-lg-12">
+                           <div class="form-group">
+                              <label for="nombreimgcreada">Nombre de la imagen *</label>
+                              <textarea class="form-control" id="nombreimgcreada" rows="4"></textarea>
+                           </div>
+                        </div>
+                     </div> -->
+
+                     <div class="row">
+                        <div class="col-12 col-sm-12 col-lg-12 text-center">
+                           <!-- Icon box -->
+                           <div class="icon icon-shape icon-shape-danger">
+                              <a onclick="confirmarEliminarImagenModal();"><span class="fas fa-trash"></span></a>
+                           </div>
+                           <h6 class="my-3">Eliminar Imagen</h6>
+                           <!-- End of Icon box -->
+                        </div>
+                     </div>
+
+                    <!--  <button id="guardar_imagen_creada" onclick="confirmarUpdateImagenCreada()" type="button" class="btn btn-block btn-primary">¡Modificar!</button> -->
+                  </form>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+<script>
+//Validaciones de opinios 
+function opinionSi() {
+   $("#valchecksi").fadeOut( 'slow', function(){ 
+
+      $("#valchecksi").html('<i class="far fa-thumbs-up" style="font-size: 3.5rem; margin-bottom: 2rem;"></i><h4 class="h4 mb-5"><span class="mr-1"></span> ¡Gracias por tu opini&oacute;n!</h4>');
+      $("#valchecksi").show();
+      saveOpinion(1);
+
+   });
+}
+function opinionNo() {
+   $("#valchecksi").fadeOut( 'slow', function(){ 
+
+      $("#valchecksi").html('<i class="far fa-thumbs-up" style="font-size: 3.5rem; margin-bottom: 2rem;"></i><h4 class="h4 mb-5"><span class="mr-1"></span> ¡Gracias por tu opini&oacute;n!</h4>');
+      $("#valchecksi").show();
+      saveOpinion(2);
+
+   });
+}
+
+function modificarTitulo() {
+
+   openModal('modal-modificaciones');
+   $("#modtitulo").show();
+   $("#titlemodal").html("Modificaci&oacute;n del Titulo");
+   $("#subtitle").html("Escribe el nuevo titulo de la publicación.");
+   $("#modfecha").hide();
+   $("#modimagen").hide();
+   $("#modimagencreada").hide();
+
+}
+
+function modificarFecha() {
+
+   openModal('modal-modificaciones');
+   $("#modfecha").show();
+   $("#titlemodal").html("Modificaci&oacute;n de la Fecha");
+   $("#subtitle").html("Elige la nueva fecha la publicación.");
+   $("#modtitulo").hide();
+   $("#modimagen").hide();
+   $("#modimagencreada").hide();
+   
+}
+
+function modificarImagen() {
+
+   openModal('modal-modificaciones');
+   $("#modimagen").show();
+   $("#titlemodal").html("Modificaci&oacute;n de la Imagen");
+   $("#subtitle").html("Elige la nueva imagen y sus configuraciones.");
+   $("#modfecha").hide();
+   $("#modtitulo").hide();
+   $("#modimagencreada").hide();
+   
+}
+
+function modificarImagenCreada() {
+
+   openModal('modal-modificaciones');
+   $("#modimagencreada").show();
+   $("#titlemodal").html("Eliminar la Imagen Actual");
+   $("#subtitle").html("Eliminara la imagen de esta publicación.");
+   $("#modfecha").hide();
+   $("#modtitulo").hide();
+   
+}
+</script>

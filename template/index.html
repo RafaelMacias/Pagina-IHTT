@@ -1,0 +1,481 @@
+<!-- para el mapa-->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/geodata/hondurasLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/spiritedaway.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<style>
+   .text-white {
+      color: white !important
+   }
+   .icon-shape-primary {
+      color: #242e4c;
+      background-color: rgb(255 255 255)
+   }
+   .badge {
+      font-size: .75rem;
+      line-height: 1.7;
+      font-weight: 700
+   }
+
+   #chartdiv {
+        width: 100%;
+        height: 480px;
+    }
+     
+    .bg-tarjetas {
+        background-color: #f5f9fe!important
+    }
+    .bg-hearder-tarjetas {
+        background-color: #f5f9fe
+    }
+    .card-header:hover{
+     transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    color:red
+    }
+    .card-header {
+    padding: 0rem 0rem !important
+    }
+    .materialboxed {
+    display: block;
+    /* cursor: zoom-in; */
+    /* position: relative; */
+    -webkit-transition: opacity 0.4s;
+    -moz-transition: opacity 0.4s;
+    -o-transition: opacity 0.4s;
+    -ms-transition: opacity 0.4s;
+    transition: opacity 0.4s;
+}
+.materialboxed:hover {
+    will-change: left, top, width, height
+}
+.materialboxed:hover:not(.active) {
+    opacity: .8
+}
+.materialboxed.active {
+    cursor: zoom-out
+}
+
+.zoom {
+  padding: 50px;
+  /*background-color: green;*/
+  transition: transform .2s;
+  border-bottom-right-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+  /*width: 200px;
+  height: 200px;*/
+  margin: 0 auto;
+  z-index: 100000;
+  width: 19.5rem;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1); 
+}
+.zoom-2 {
+  padding: 50px;
+  /*background-color: green;*/
+  transition: transform .2s;
+  border-bottom-right-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+  /*width: 200px;
+  height: 200px;*/
+  margin: 0 auto;
+  z-index: 100000;
+}
+
+.zoom-2:hover {
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1); 
+}
+.table-row {
+    vertical-align: middle;
+    text-align: center
+}
+.header-table {
+    background-color: #1c2540;
+    color: white
+}
+.align-middle {
+    vertical-align: middle
+}
+.comprobante {
+    font-size: 2.5rem;
+    color: #A91E2C
+}
+.sub-menu {
+  /*float: left;*/
+  display: block;
+  text-align: center;
+}
+
+.sub-menu .menu-title {
+  display: block;
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+</style>
+<section class="section section-lg pt-0" style="padding-bottom: 2rem;">
+    <div class="container mt-n8 mt-lg-n10 z-2">
+        <!--ESCRITORIO-->
+        <div class="row mt-12 d-none d-lg-block">
+            <!--Seccion de accesos rapidos-->
+            <section class="section section-lg pt-0" id="accesosrapidos" style="padding-bottom: 3rem;">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-xl-12 mb-5 mb-lg-0">
+                        <div class="card text-center border-light col-center shadow" style="width: 58rem;border-radius: 1.45rem">
+                         <!--  <div class="card-header">
+                              <span class="card-text small"><i class="far fa-calendar-alt mr-2"></i>15 March 2020</span>
+                          </div> -->
+                          <div class="card-body" style="padding: 0.5rem;">
+                            <div id="Carousel3" class="carousel slide carousel-fade" data-ride="carousel" style="width: 57rem;">
+                                <ol class="carousel-indicators">
+                                    @@INDICADORES@@
+                                </ol>
+                                <div class="carousel-inner" style="border-radius: 20px;">
+                                    @@IMAGENES@@
+                                </div>
+                                <a class="carousel-control-prev" href="#Carousel3" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#Carousel3" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                          </div>
+                          <!-- <div class="card-footer">
+                              <a href="./profile.html" data-toggle="tooltip" data-placement="top" title="" data-original-title="23k followers">
+                                  <img class="avatar-sm mr-2 img-fluid rounded-circle" src="../../assets/img/team/profile-picture-2.jpg" alt="avatar"> Jo J. Moore
+                              </a>
+                          </div> -->
+                        </div>
+                    </div>
+                </div>
+            </section><!--Cierre de los accesos rapidos-->
+        </div>
+        <!--MOVIL-->
+        <div class="row mt-10 d-lg-none">
+            <!--Seccion de accesos rapidos-->
+            <section class="section section-lg pt-0" id="accesosrapidos" style="padding-bottom: 1rem;">
+
+                <div class="row">
+                  <div class="col-12 col-sm-6 col-xl-12 mb-0 mb-lg-0">
+                      <div class="card text-center border-light col-center shadow" style="border-radius: 1.45rem">
+                         <!--  <div class="card-header">
+                              <span class="card-text small"><i class="far fa-calendar-alt mr-2"></i>15 March 2020</span>
+                          </div> -->
+                          <div class="card-body" style="padding: 0.5rem;">
+                            <div id="Carousel3" class="carousel slide carousel-fade" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    @@INDICADORES@@
+                                </ol>
+                                <div class="carousel-inner" style="border-radius: 20px;">
+                                    @@IMAGENES@@
+                                </div>
+                                <a class="carousel-control-prev" href="#Carousel3" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#Carousel3" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                          </div>
+                          <!-- <div class="card-footer">
+                              <a href="./profile.html" data-toggle="tooltip" data-placement="top" title="" data-original-title="23k followers">
+                                  <img class="avatar-sm mr-2 img-fluid rounded-circle" src="../../assets/img/team/profile-picture-2.jpg" alt="avatar"> Jo J. Moore
+                              </a>
+                          </div> -->
+                      </div>
+                  </div>
+                </div>
+            </section><!--Cierre de los accesos rapidos-->
+        </div>
+
+    </div>
+</section>
+
+
+<!-- <section class="section section-lg py-sm-0 mb-4 bg-soft">
+
+    <div class="row justify-content-center mb-5 mb-md-7">
+        <div class="col-12 col-md-8 text-center mt-5">
+          <h2>¡Beneficios del IHTT!</h2>
+          <p class="lead">Estos accesos r&aacute;pidos permiten navegar de manera eficaz entre las diferente sistemas para peticiones, solicitudes y consultas.</p>
+        </div>
+    </div>
+
+    <div class="container z-2 mt-sm-n6 mt-md-n7">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                <div class="card bg-tarjetas p-4">
+                    <div class="card-header pb-0 bg-hearder-tarjetas zoom-2">
+                        <a data-toggle="modal" data-target="#modal-constancias">
+                            <img src="assets/img/Constancias.png" class="card-img-top rounded shadow border-0 " alt="Neil Avatar">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="card bg-tarjetas p-4">
+                    <div class="card-header pb-0 bg-hearder-tarjetas zoom-2">
+                        <a data-toggle="modal" data-target="#modal-default">
+                            <img src="assets/img/Verifique-su-Cita.png" class="card-img-top rounded shadow border-0" alt="Neil Avatar">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="card bg-tarjetas p-4">
+                    <div class="card-header pb-0 bg-hearder-tarjetas zoom">
+                       <img src="assets/img/Beneficio1.png" class="card-img-top rounded shadow border-0" alt="Neil Avatar">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="card bg-tarjetas p-4">
+                    <a href="assets/Documentos/REACTIVACION.docx">
+                        <div class="card-header pb-0 bg-hearder-tarjetas zoom-2">
+                           <img src="assets/img/descargar.jpeg" class="card-img-top rounded shadow border-0" alt="Neil Avatar">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="card bg-tarjetas p-4">
+                    <div class="card-header pb-0 bg-hearder-tarjetas zoom">
+                       <img src="assets/img/Beneficio2.png" class="card-img-top rounded shadow border-0" alt="Neil Avatar">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="card bg-tarjetas p-4">
+                    <a href="assets/Documentos/COMPENSACION.docx">
+                        <div class="card-header pb-0 bg-hearder-tarjetas zoom-2">
+                           <img src="assets/img/descarga2.jpeg" class="card-img-top rounded shadow border-0" alt="Neil Avatar">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section> -->
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Default</button> -->
+<div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Información de su cita</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 col-lg-10">
+                      <div class="form-group text-left">
+                        <!-- <label for="nombreimg">Nombre de la imagen *</label> -->
+                        <input type="text" class="form-control" id="inpbuscador" placeholder="Identidad" onkeypress="(event.keyCode == 13)?searchCita(0):true;">
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-2">
+                        <button onclick="searchCita(0,0)" type="button" class="btn btn-sm btn-secondary" style="padding: .6rem .75rem;"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="row table-responsive" >
+                    <table class="table" id="tablecita" style="border: solid 1px;display: none;">
+                        <tbody id="resultcita">
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- <div class="row">
+                    <div class="col-12 mb-5 mb-lg-0">
+                        <div class="card border-light">
+                            <div class="row no-gutters align-items-center">
+                               
+                                <div class="col-md-12">
+                                    <div class="card-body">
+                                        <div class="text-center"><i class="far fa-dizzy tex" style="font-size: 6rem;"></i></div>
+                                        <p><h5 class="card-title text-center">¡Lo sentimos! No se encontro nada relacionado con su identidad.</h5></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+
+            </div>
+           <!--  <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary">I Got It</button>
+                <button type="button" class="btn btn-link text-danger ml-auto" data-dismiss="modal">Close</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal-constancias" tabindex="-1" role="dialog" aria-labelledby="modal-constancias" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">COMUNICADO No. DCI-03-2022</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               <div id="divreporte"></div>
+            </div>
+            
+
+                <!-- <div class="row">
+                    <div class="col-12 mb-5 mb-lg-0">
+                        <div class="card border-light">
+                            <div class="row no-gutters align-items-center">
+                               
+                                <div class="col-md-12">
+                                    <div class="card-body">
+                                        <div class="text-center"><i class="far fa-dizzy tex" style="font-size: 6rem;"></i></div>
+                                        <p><h5 class="card-title text-center">¡Lo sentimos! No se encontro nada relacionado con su identidad.</h5></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+
+        </div>
+           <!--  <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary">I Got It</button>
+                <button type="button" class="btn btn-link text-danger ml-auto" data-dismiss="modal">Close</button>
+            </div> -->
+    </div>
+</div>
+</div>
+
+<script src="assets/js/confetti.js"></script>
+<script src="assets/js/Perfil_Empleado.js"></script>
+
+<!--Busqueda del aviso de cobro-->
+<script>
+$(document).ready(function(){
+    OpenModa();
+});
+function OpenModa() {
+    openModal("modal-constancias");
+    $("#divreporte").html('<div class="video-container">  <iframe width="770" height="480"  src="assets/img/COMUNICADO_DCI_03_2022.JPG" frameborder="0" allowfullscreen=""></iframe></div>');
+}
+//Upper case primera letra
+function upperCaseFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+//Lower case todo excepto primera letra
+function lowerCaseAllWordsExceptFirstLetters(string) {
+    return string.replace(/\S*/g, function (word) {
+        return word.charAt(0) + word.slice(1).toLowerCase();
+    });
+}
+
+  var last = 0;
+  document.addEventListener('DOMContentLoaded', function() {
+    //searchCita(0);
+  }, false);
+
+  function nextPagecita() {
+    var suma = parseInt(last);
+    searchCita(suma);
+  }
+
+  function backPagecenso() {
+    searchCita(last - 10);
+  }
+
+  function searchCita(le) {
+    $("#tablecita").show();
+   
+    last = le;
+
+    $("#resultcita").html(
+      '<tr> <td colspan="12" style="text-align:center"><i class="far fa-smile-beam" style="margin-right: 5px;"></i>Buscando tus datos...<br><div class="progress" style="height: 30px !important;"> <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 100%;animation: 0s ease 0s 1 normal none running animate-positive !important;"></div> </div> </td> </tr>'
+    );
+
+    var parameter = last + '&col_name='+$('#inpbuscador').val();
+    
+    $.ajax({
+      dataType: "json",
+      timeout: 8000,
+      url: "Api_PW.php?action=search-citas&Next=" + parameter,
+      success: function(dataserver) {
+        var resultcita = '';
+        var pagination = '';
+        var info = dataserver[0];
+        var pagin = dataserver[1];
+        last = info.last;
+        var data = dataserver[2];
+
+        for (var i = 0; i < data.length; i++) {
+
+            //Variable para convertir la ventanilla a minusclas
+            var ventanilla = upperCaseFirstLetter(lowerCaseAllWordsExceptFirstLetters(data[i].Desc_Oficina));
+            //Variable para convertir la ventanilla a minusclas
+            var cantidad = upperCaseFirstLetter(lowerCaseAllWordsExceptFirstLetters(data[i].Desc_Tipo_Cita));
+
+            resultcita +='<tr class="header-table"> <th colspan="3" scope="row" class="table-row" style="text-align: right;"># Cita:</th> <td class="table-row"> <span>'+data[i].ID_Cita+'</span> </td> </tr> <tr> <th colspan="4" scope="row" class="table-row">Identidad</th> </tr> <tr> <td colspan="4" class="table-row"> <span>'+data[i].ID_Solicitante+'</span> </td> </tr> <tr> <th colspan="4" scope="row" class="table-row">Nombre</th> </tr> <tr> <td colspan="4" class="table-row"> <span>'+data[i].Nombre_Solicitante+'</span> </td> </tr> <tr> <th colspan="2" class="align-middle text-center" scope="row">Horario</th> <th scope="row" class="align-middle text-center" style="width: 9rem;">Horario Inicial</th> <th scope="row" class="align-middle text-center">Horario Finaliza</th> </tr> <tr> <td colspan="2" class="text-center"> <span>'+data[i].Desc_Horario_Cita+'</span> </td> <td class="text-center"> <span>'+data[i].Hora_Inicio+'</span> </td> <td class="text-center"> <span>'+data[i].Hora_Final+'</span> </td> </tr> <tr> <th colspan="4" scope="row" class="table-row">Ventanilla</th> </tr> <tr> <td colspan="4" class="table-row"> <span>'+ventanilla+'</span> </td> </tr> <tr> <th colspan="3" scope="row" class="table-row">Cantidad a Presentar</th> <th scope="row" class="table-row">Fecha cita</th> </tr> <tr> <td colspan="3" class="text-center"> <span>'+cantidad+'</span> </td> <td class="text-center"> <span>'+data[i].Fecha_Cita+'</span> </td> </tr> <tr> <th colspan="4" scope="row" class="table-row">Comprobante</th> </tr> <tr> <td colspan="4" class="text-center"> <a href="https://satt.transporte.gob.hn:240/Ticket_Cita.php?ID_Cita='+data[i].ID_Cita+'"><i class="far fa-file-pdf comprobante"></i></a> </td> </tr>';
+        }
+
+        var ultima = "";
+        var activepage = "";
+        for (var i = 0; i < pagin.length; i++) {
+          pagination += '<li class="page-item ' + pagin[i].Activo + ' "><a class="page-link" href="javascript:searchCita(\'' + pagin[i].Paginas + '\');">' + pagin[i].Nun + '</a></li>';
+          activepage = pagin[i].Paginas;
+          if (pagin[i].Activo=='active') { ultima = pagin[i].Paginas; console.log(ultima); }
+          anter = pagin[0].Paginas;
+        }
+        var backpage = ultima-10;
+        var anterior = '<li id="anterior" class="page-item"><a class="page-link" href="javascript:searchCita(\'' +backpage+'\');"><i class="fa fa-angle-double-left"></i></a></li> <li class="page-item"><a class="page-link" href="javascript:searchCita(0);"><i class="fa fa-home"></i></a></li>';
+
+        var Siguiente = '<li class="page-item"><a class="page-link" href="javascript:nextPagecita();" ><i class="fa fa-angle-double-right"></i></a></li>';
+
+
+        if (activepage == ultima) {
+          Siguiente = '<li class="page-item disabled"><a class="page-link"><i class="fa fa-angle-double-right"></i></a></li>';
+        }
+
+        if (info.last <= 10) {
+          anterior = '<li id="anterior" class="page-item disabled"><a class="page-link"><i class="fa fa-angle-double-left"></i></a></li>';
+        }
+
+        $("#resultMsg_Censo").html(info.Total);
+        $("#resultcita").html(resultcita);
+        $("#paginacita").html(anterior + pagination + Siguiente);
+        $("#tablebar").hide();
+        $('.tooltipped').tooltip({
+          delay: 0
+        });
+
+        if (data.length == 0) {
+          $("#resultcita").html('<tr> <td colspan="7" style="text-align:center">¡Lo sentimos mucho! El registro que buscas No existe en la base de datos.</td></tr>');
+        }
+      }
+
+    }).error(function() {
+      $("#resultcita").html('<tr> <td colspan="7" style="text-align:center;color: #E57373;">¡Lo sentimos mucho!Ocurrio un error durante la busqueda, por favor intenta nuevamente.</td></tr>');
+    });
+  }
+</script>
+<!--termina el censo-->

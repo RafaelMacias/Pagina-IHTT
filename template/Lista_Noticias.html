@@ -1,0 +1,429 @@
+<link href="@@DIR@@css/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection"> 
+<style>
+.sweet-alert {
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #424aa07a !important;
+  border-width: 5px
+}
+
+.m .sweet-overlay {
+  background-color: rgba(0, 188, 212, 0.27)
+}
+
+.a .sweet-overlay {
+  background-color: rgba(239, 67, 13, 0.45)
+}
+.col-center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto
+}
+.content{
+overflow: hidden;
+width: 25rem;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical
+}
+.owl-theme .owl-nav {
+  margin-top: -1.75rem !important
+}
+.github-big-icon {
+  position: absolute;
+  right: 150px;
+  top: 2px;
+}
+.github-big-icon span {
+    font-size: 400px;
+    opacity: .1;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+<input class="form-control datepicker" id="valinput" type="hidden" value="1">
+<div class="section section-lg" style="padding-top: 0rem;padding-bottom: 2rem;">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-12 col-sm-9 col-md-9 col-lg-9">
+        <h2 class="h3 text-center text-lg-left" style="font-size: 3rem">Listado Noticias</h2>
+      </div>
+      <div class="col-12 col-sm-3 col-md-3 col-lg-3 mt-3">
+        <div class="custom-control custom-switch">
+          <input onclick="validacionSearch();" type="checkbox" class="custom-control-input" id="customSwitch1">
+          <label class="custom-control-label" for="customSwitch1">Filtrar noticias</label>
+        </div>
+      </div>
+
+    </div>
+    <hr>
+
+    <div class="row" id="tarbuscar" style="display: none;">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card border-light mb-4">
+          <div class="row no-gutters align-items-center">
+            <div class="col-12 col-lg-12 col-xl-12">
+              <div class="card-body py-lg-0">
+                <div class="col-12 col-md-12">
+                    <div class="row">
+                      <div class="col-12 col-sm-11 col-md-11 col-lg-11 mt-1">
+                        <h6 class="h3 text-center text-lg-left" style="font-size: 1.5rem">B&uacute;squeda por rango fecha</h6>
+                      </div>
+                     <!-- <div class="input-daterange.datepicker row align-items-center"> -->
+                        <div class="col-12 col-lg-6 col-xl-5">
+                           <label class="h6 text-gris" for="fechainicio">Desde</label>
+                           <div class="form-group">
+                              <div class="input-group input-group-border">
+                                 <div class="input-group-prepend"><span class="input-group-text"><span class="far fa-calendar-alt"></span></span></div>
+                                 <input class="form-control datepicker" id="fechainicio" placeholder="Fecha inicial" type="text">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-12 col-lg-6 col-xl-5">
+                           <div class="form-group">
+                              <label class="h6 text-gris" for="fechafinal">Hasta</label>
+                              <div class="input-group input-group-border">
+                                 <div class="input-group-prepend"><span class="input-group-text"><span class="far fa-calendar-alt"></span></span></div>
+                                 <input class="form-control datepicker" id="fechafinal" placeholder="Fecha final" type="text">
+                              </div>
+                           </div>
+                        </div>
+
+                         <div class="col-12 col-lg-2 col-xl-2" style="margin-top: 2.0rem!important;">
+                          <div class="form-group">
+                               <button onclick="validacionInputs()" class="btn btn-light" type="button"><span class="mr-1"><span class="fas fa-search"></span></span>Buscar</button>
+                          </div>
+                        </div>
+
+                     </div>
+
+                    </div>
+  
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <table  id="tablebar" style="width: 100%;">
+          <tbody id="resultbar"></tbody>
+        </table>
+      </div>
+      
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <h6 class="text-gris" id="resultMsg_Aviso" style="float:right;"></h6>
+      </div>
+     
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12" id="resultnoticias">
+       
+      </div>
+
+      <div class="d-flex justify-content-center w-100">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination" style=" text-align: right; " id="paginaaviso">
+          </ul>
+        </nav>
+      </div> 
+    </div>
+
+
+  </div><!--container-->
+
+    
+
+</div>
+</div>
+
+
+
+<script>
+
+//Validacion para el switch de tarjeta de buscar
+function validacionSearch() {
+
+  if ($("#customSwitch1").prop('checked')) {
+    $("#tarbuscar").show();
+    $("#valinput").val(2);
+  }else {
+
+    $("#tarbuscar").hide();
+    $("#valinput").val(1);
+  }
+
+}
+//Validacion de los campos de fecha
+function validacionInputs() {
+
+  if($("#fechainicio").val().trim().length<1){
+    toastwarning("Debe ingresar una fecha inicial ");
+    return;
+
+  }else if ($("#fechafinal").val().trim().length<1) {
+    toastwarning("Debe ingresar una fecha final");
+    return;
+
+  }else if($("#fechainicio").val()>$("#fechafinal").val()) {
+    toastwarning("Debe ingresar un rango de fechas aceptable");
+    return;
+
+  }else {
+    searchnoticia(0,0);
+  }
+
+}
+//Funcion de insert las vistas
+function saveTotalVistasPublicacion(id,n) {
+
+   var form_data = new FormData();
+   form_data.append("action","save-vistas");
+   //Datos para el insert del like
+   form_data.append("iddocumento", id);
+   form_data.append("visitas", n);
+  
+   fetch("Api_PW.php",
+    {
+      method: "POST",
+      body: form_data
+    })
+      .then((resp) => resp.json())
+      .then(Data=>{
+         if (Data.status==1) {
+            actualizar();
+         }else {
+            sweetAlert("!ATENCIÓN¡",Data.status, "error");
+         }
+      })
+    .catch(err=>{ console.log(err); });
+}
+function actualizar(){
+  window.location.reload(true);
+}
+</script>
+
+<script>
+
+  var last = 0;
+  document.addEventListener('DOMContentLoaded', function() {
+    searchnoticia(0);
+  }, false);
+
+  function nextPageaviso() {
+    var suma = parseInt(last);
+    searchnoticia(suma);
+  }
+
+  function backPageaviso() {
+    searchnoticia(last - 10);
+  }
+
+  function searchnoticia(le) {
+
+    last = le;
+    var boton = '@@ELIMINAR@@';
+
+    $("#resultbar").html(
+      '<tr> <td colspan="12" style="text-align:center"><i class="far fa-smile-beam" style="margin-right: 5px;"></i>Buscando tus datos...<br><div class="progress" style="height: 30px !important;"> <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 100%;animation: 0s ease 0s 1 normal none running animate-positive !important;"></div> </div> </td> </tr>'
+    );
+
+    if ($('#valinput').val()==2) {
+      var tipoparametro = 'Fechas';
+      var parameter = last+'&fecha_inicio='+$('#fechainicio').val()+'&fecha_final='+$('#fechafinal').val()+'&Tipo='+tipoparametro;
+    }else {
+      var parameter = last+'&col_name=';
+    }
+
+    $.ajax({
+      dataType: "json",
+      timeout: 8000,
+      url: "Api_PW.php?action=search-noticias&Next=" + parameter,
+      success: function(dataserver) {
+        var resultnoticias = '';
+        var pagination = '';
+        var info = dataserver[0];
+        var pagin = dataserver[1];
+        last = info.last;
+        var data = dataserver[2];
+
+
+        for (var i = 0; i < data.length; i++) {
+
+          if (data[i].ID_Tipo_Publicacion==null) {
+
+            var link = '<a onclick="saveVistasPublicacion(\''+data[i].ID_Publicacion+'\')" href="https://www.transporte.gob.hn/Publicacion.php?ID='+data[i].ID_Publicacion_Encrypted+'" target="_blank"> <h2 class="h5 text-gris">'+data[i].Titulo_Publicacion+'</h2> </a>';
+
+            var eliminar = '<a class="dropdown-item" onclick="confirmarEliminar(\''+data[i].ID_Publicacion+'\',\''+data[i].ID_Imagen+'\',\''+data[i].Nombre_Imagen+'\',1)"> <span class="far fa-trash-alt mr-2"></span>Eliminar </a>';
+
+            if (data[i].ID_Imagen==null) {
+              var img = '';
+              var div = '<div class="col-12 col-lg-6 col-xl-12">';
+            }else if (data[i].ID_Imagen=='') {
+              var img = '';
+              var div = '<div class="col-12 col-lg-6 col-xl-12">';
+            }else {
+              var img = '<div class="col-12 col-lg-3 col-xl-3"> <img style="width: 9rem; margin-top: 10px; height: auto;" src="Documentos/Imagenes/Noticias/'+data[i]['Nombre_Imagen']+'" class="card-img-top rounded-top rounded-bottom center" alt="image"> </div>';
+              var css = 'border-left: solid 1px #e6e7e8;';
+              var div = '<div class="col-12 col-lg-9 col-xl-9">';
+            }
+
+          } else {
+
+            var link = '<a onclick="saveVistasPublicacion(\''+data[i].ID_Publicacion+'\')" href="https://www.transporte.gob.hn/Publicacion_Digital.php?ID='+data[i].ID_Publicacion_Encrypted+'" target="_blank"> <h2 class="h5">'+data[i].Titulo_Publicacion+'</h2> </a>';
+
+            var eliminar = '<a class="dropdown-item" onclick="confirmarEliminar(\''+data[i].ID_Publicacion+'\',\''+data[i].ID_Imagen+'\',\''+data[i].Nombre_Imagen+'\',\''+data[i].DESC_Tipo_Publicacion+'\')"> <span class="far fa-trash-alt mr-2"></span>Eliminar </a>';
+
+            if (data[i].ID_Imagen==null) {
+              var img = '';
+              var div = '<div class="col-12 col-lg-6 col-xl-12">';
+            }else if (data[i].ID_Imagen=='') {
+              var img = '';
+              var div = '<div class="col-12 col-lg-6 col-xl-12">';
+            }else {
+              var img = '<div class="col-12 col-lg-3 col-xl-3"><img style="width: 10rem;margin-top: 10px" src="Documentos/Imagenes/'+data[i]['DESC_Tipo_Publicacion']+'/'+data[i]['Nombre_Imagen']+'" class="card-img-top rounded-top rounded-bottom center" alt="image"></div>';
+              var css = 'border-left: solid 1px #e6e7e8;';
+              var div = '<div class="col-12 col-lg-9 col-xl-9">';
+            }
+
+          }
+
+
+        resultnoticias +='<div class="card border-light mb-4"> <div class="row no-gutters align-items-center"> '+img+' '+div+' <div class="card-body py-lg-0" style="min-height: 12rem;padding-top: 3rem !important;"> <div class="d-flex no-gutters align-items-center mb-2"> <div class="col text-left"> <ul class="list-group mb-0"> <li class="list-group-item small p-0"><span class="far fa-calendar-alt mr-2 text-turqueza"></span><span class="text-gris">'+data[i].Fecha_Publicacion+'</span></li> </ul> </div> <div class="col text-right"> <div class="btn-group"> '+boton+' <div class="dropdown-menu"> '+eliminar+' </div> </div> </div> </div> '+link+' <div class="col d-flex pl-0"> <span class="text-muted font-small mr-3"><span class="fas fa-eye mr-2 text-turqueza"></span><span class="text-gris">'+data[i].Total_Visitas+'</span></span> <span class="text-muted font-small mr-3"><span class="fas fa-thumbs-up mr-2 text-turqueza"></span><span class="text-gris">'+data[i].Total_Like+'</span></span></div> </div> </div> </div> </div>';
+
+        }
+
+        var ultima = "";
+        var activepage = "";
+        for (var i = 0; i < pagin.length; i++) {
+          pagination += '<li class="page-item ' + pagin[i].Activo + ' "><a class="page-link" href="javascript:searchnoticia(\'' + pagin[i].Paginas + '\');">' + pagin[i].Nun + '</a></li>';
+          activepage = pagin[i].Paginas;
+          if (pagin[i].Activo=='active') { ultima = pagin[i].Paginas; console.log(ultima); }
+          anter = pagin[0].Paginas;
+        }
+        var backpage = ultima-10;
+        var anterior = '<li id="anterior" class="page-item"><a class="page-link" href="javascript:searchnoticia(\'' +backpage+'\');"><i class="fa fa-angle-double-left"></i></a></li> <li class="page-item"><a class="page-link" href="javascript:searchnoticia(0);"><i class="fa fa-home"></i></a></li>';
+
+        var Siguiente = '<li class="page-item"><a class="page-link" href="javascript:nextPageaviso();" ><i class="fa fa-angle-double-right"></i></a></li>';
+
+
+        if (activepage == ultima) {
+          Siguiente = '<li class="page-item disabled"><a class="page-link"><i class="fa fa-angle-double-right"></i></a></li>';
+        }
+
+        if (info.last <= 10) {
+          anterior = '<li id="anterior" class="page-item disabled"><a class="page-link"><i class="fa fa-angle-double-left"></i></a></li>';
+        }
+
+        $("#resultMsg_Aviso").html("Total publiaciones encontradas: "+info.Total);
+        $("#resultnoticias").html(resultnoticias);
+        $("#paginaaviso").html(anterior + pagination + Siguiente);
+        $("#tablebar").hide();
+        $('.tooltipped').tooltip({
+          delay: 0
+        });
+
+        if (data.length == 0) {
+          $("#resultnoticias").html('<div class="alert alert-danger alert-dismissible fade show" id="alertbusqueda" role="alert"> <span class="alert-inner--icon"><i class="far fa-dizzy"></i></span> <span class="alert-inner--text"><strong>¡Lo sentimos!</strong> Ocurrió un error al cargar los datos.</span> </div>');
+        }
+      }
+
+    }).error(function() {
+      $("#resultnoticias").html('<div class="alert alert-danger alert-dismissible fade show" id="alertbusqueda" role="alert"> <span class="alert-inner--icon"><i class="far fa-dizzy"></i></span> <span class="alert-inner--text"><strong>¡Lo sentimos!</strong> No se encontro nada con las fechas seleccionadas.</span> </div>');
+    });
+  }  
+
+//Funcion para eliminar la imagen cargada
+function confirmarEliminar(id,idimagen,nombreimagen,tipo){
+
+  swal({ 
+  title: "",
+  text: '<div class="fm-notification-body"> <div class="fm-notification-icon"> <div class="fm-del-contact-avatar"> <span></span> <div class="fm-del-contacts-number">1</div> </div> </div> <div class="fm-notification-info"> <p>¿Estás seguro de que quieres eliminar la publicación seleccionada?</p> <div class="fm-notification-warning">Aviso: Cualquier publiación eliminada no se podra recuperar!</div> </div> <div class="clear"></div> </div>',
+  html: true,
+  showCancelButton: true,
+  cancelButtonText: "No",
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Si",
+  closeOnConfirm: false 
+},function(){
+  eliminarPublicacion(id,idimagen,nombreimagen,tipo);
+});
+   
+$("#contenthome").removeClass("m");
+$("#contenthome").addClass("a");
+}
+
+//Funcion eliminar publicacion
+function eliminarPublicacion(id,idimagen,nombreimagen,tipo) {
+
+  var form_data = new FormData();
+    form_data.append("action","delete-publicacion");
+    //Datos de la publicacion
+    form_data.append("idpublicacion", id);
+    form_data.append("idimagen", idimagen);
+    form_data.append("nombre_imagen", nombreimagen);
+    form_data.append("desctipo", tipo);
+    form_data.append("tipo", 2);
+
+  
+    fetch("Api_PW.php",
+    {
+      method: "POST",
+      body: form_data
+    })
+      .then((resp) => resp.json())
+      .then(Data=>{
+        if (Data.status==1) {
+          swal({
+            title: "Publicación eliminada satisfactoriamente!",
+            //text: "<b>Nota:</b> La Noticia estará publica en la fecha que haya elegido.",
+            type: "success",
+            html:true,
+            confirmButtonText: "Continuar"
+          },function () {
+            swal.close();
+            searchnoticia();
+          });
+          $("#contenthome").removeClass("a");
+          $("#contenthome").addClass("m");
+        } else {
+          sweetAlert("!ATENCIÓN¡",Data.status, "error");
+        }
+      })
+    .catch(err=>{ console.log(err); });
+}
+
+//Funcion de insert las vistas
+function saveVistasPublicacion(id) {
+
+   var form_data = new FormData();
+   form_data.append("action","save-vistas-publicacion");
+   //Datos para el insert del like
+   form_data.append("idpublicacion", id);
+  
+   fetch("Api_PW.php",
+    {
+      method: "POST",
+      body: form_data
+    })
+      .then((resp) => resp.json())
+      .then(Data=>{
+         if (Data.status==1) {
+            actualizar();
+         }else {
+            sweetAlert("!ATENCIÓN¡",Data.status, "error");
+         }
+      })
+    .catch(err=>{ console.log(err); });
+}
+
+function actualizar(){
+  window.location.reload(true);
+}
+</script>
+

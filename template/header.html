@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>IHTT - {{title_viñeta}}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name="title" content="IHTT - {{title_viñeta}}">
+<meta name="author" content="IHTT">
+<meta name="description" content="Sistema Automatizado del Transporte Terrestre.">
+<meta name="keywords" content="ihtt, IHTT, Transporte, transporte, pagina ihtt, Instituto Hondureño de Transporte Terrestre">
+
+<!--Iconos para el Favicon-->
+<link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon/android-chrome-512x512.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/android-chrome-192x192.png">
+<link href="https://db.onlinewebfonts.com/c/7001cb455721479a34c81bc405ad96d4?family=Pluto+Black" rel="stylesheet">
+<!-- <link rel="manifest" href="assets/img/favicon/site.webmanifest">
+<link rel="mask-icon" href="assets/img/favicon/safari-pinned-tab.svg" color="#ffffff"> -->
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+<link type="text/css" href="vendor/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link type="text/css" href="assets/fonts/font-awesome/css/font-awesome.min.css">
+<link type="text/css" href="assets/fonts/pluto-sans/css/style.font.css">
+<link rel="stylesheet" href="vendor/jqvmap/dist/jqvmap.min.css">
+<link type="text/css" href="assets/css/pixel.css" rel="stylesheet">
+<link type="text/css" href="assets/css/personalizado.css" rel="stylesheet">
+  <!-- Select2 Bootstrap -->
+<link rel="stylesheet" href="assets/css/select2.min.css">
+<link rel="stylesheet" href="assets/css/select2-bootstrap4.min.css">
+<!-- Tempusdominus Bbootstrap 4 -->
+<link rel="stylesheet" href="vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+<!-- Animate css -->
+<link rel="stylesheet" href="assets/css/animate.css" type="text/css">
+<!-- Mi Estilo css -->
+<link rel="stylesheet" href="assets/css/mystyle.css" type="text/css">
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141734189-5"></script><script>window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-141734189-5');
+</script> -->
+</head>
+<style>
+.btn.btn-pill {
+   border-radius: 2rem;
+}
+body, html {
+  height: 100%;
+}
+/*.navbar-light .navbar-nav .nav-link {
+    color: #9e9e9e;
+}*/
+/*.navbar-main {
+   top: 8.7rem !important;
+   background: #ff000000;
+}*/
+.headroom--not-top.navbar-theme-secondary {
+    background-color: #1c254000;
+}
+/* Small */
+@media (min-width: 35.5em) {
+   .navbar-light .navbar-nav .nav-link {
+       color: #4e5079;
+   }
+
+}
+/* Medium */
+@media (min-width: 64em) {
+   .navbar-expand-lg {
+       top: -1rem !important;
+       background: #ff000000;
+       padding-left: 14.5rem;
+   }
+   .navbar-light .navbar-nav .nav-link {
+      color: #FFFFFF !important;
+   }
+}
+/* (1440x900) WXGA+ Display */
+@media (min-width: 66em) {
+   .navbar-expand-lg {
+       top: -1rem !important;
+       background: #ff000000;
+       padding-left: 14.5rem;
+   }
+   .navbar-light .navbar-nav .nav-link {
+       color: #FFFFFF !important;
+   }
+}
+
+/* (1920x1080) Full HD Display */
+@media (min-width: 100em) {
+   .navbar-expand-lg {
+      top: -.6rem !important;
+      background: #ff000000;
+      padding-left: 14.5rem;
+   }
+}
+.col-center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show>.nav-link {
+   color: #e0e0e0 !important
+}
+.text-light, .text-light:hover {
+    color: #9e9e9e!important;
+}
+@font-face {
+  font-family: 'Pluto Sans Regular';
+  src: url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.eot');
+  src: url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.eot?#iefix') format('embedded-opentype'),
+  url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.woff') format('woff'),
+  url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* @font-face {
+  font-family: 'Pluto Black'; 
+  src: url('assets/fonts/plutoblack_0-webfont.woff') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+div,p,h1,h2,h3,h4,h5,h6,a,li,table {
+  font-family: 'Pluto Sans Regular' !important;
+  color: #9e9e9e;
+}
+</style>
+<body id="contenthome">
+<header class="header-global">
+   <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-light navbar-theme-secondary">
+      <div class="container position-relative">
+         <!-- <a class="navbar-brand mr-lg-5" href="index.php">
+            <span class="fas fa-globe" style="font-size: 40px"></span>
+            <img class="navbar-brand-dark" src="assets/img/brand/light.svg" alt="Logo light"> 
+            <img class="navbar-brand-light" src="assets/img/brand/dark.svg" alt="Logo dark">
+         </a> -->
+         {ENCARGADO}
+          <!--Contine los botones del header-->
+         <div class="d-flex align-items-center">
+            <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          </div>
+      </div>
+   </nav>
+</header>
+<main>
+
+  <!--Seccion en la cual esta el contenido del header normal--> 
+  <section class="section-header bg-secondary pb-9 pb-md-11 mb-4 mb-lg-6 text-white d-none d-lg-block" style="padding-top: 0rem;padding-bottom: 0px !important;">
+         <div>
+            <!-- <img src="assets/img/encabezado-de-pagina-web3.png"> -->
+            <img src="assets/img/encabezado-pagina.png">
+         </div>
+   </section>
+
+    <!--Seccion en la cual esta el contenido del header movil--> 
+  <section class="section-header bg-secondary pb-9 pb-md-11 mb-4 mb-lg-6 text-white image-portada d-lg-none" style="background-image: url(assets/img/encabezado-movil2.png);width: 100%;padding-bottom: 0rem!important;background-color: #ebf4f6!important;">
+       <!--   <div class="container">
+            <div class="row justify-content-center">
+               <div class="col-12 col-md-12 col-lg-12 text-right">
+                  <span class="display-2 mb-3"></span>
+
+                  <button class="btn btn-icon-only btn-pill btn-outline-info" type="button" style="margin-bottom: 5px;">
+                     <span aria-hidden="true" class="fab fa-facebook"></span>
+                  </button>
+
+                  <button class="btn btn-icon-only btn-pill btn-outline-danger" type="button" style="margin-bottom: 5px;">
+                     <span aria-hidden="true" class="fab fa-youtube"></span>
+                  </button>
+
+                  <button class="btn btn-icon-only btn-pill btn-outline-info" type="button" style="margin-bottom: 5px;">
+                     <span aria-hidden="true" class="fab fa-twitter"></span>
+                  </button>
+
+                  <button class="btn btn-icon-only btn-pill btn-outline-tertiary" type="button" style="margin-bottom: 5px;">
+                     <span aria-hidden="true" class="fab fa-instagram"></span>
+                  </button>
+               </div>
+            </div>
+         </div> -->
+   </section>
+<!--Menu lateral de redes sociales-->
+<!--Menu Normal-->
+<div id="social-sidebar" class="d-none d-lg-block">
+  <a href="https://www.facebook.com/Instituto-Hondureño-del-Transporte-Terrestre-547721712077799" target="_blank" class="facebook" style="border-top-right-radius: 20px;"><span>Facebook</span><i class="fab fa-facebook-f"></i></a>
+  <a href="https://twitter.com/IHTT_HN" target="_blank" class="twitter"><span>Twitter</span><i class="fab fa-twitter"></i></a> 
+  <a href="https://www.youtube.com/channel/UCLBLtdUW72ukSneMXoZT-Cw" target="_blank" class="youtube" style="border-bottom-right-radius: 20px;"><span>Youtube</span><i class="fab fa-youtube"></i></a> 
+</div>
+<!--Menu Movil-->
+<!-- <div id="social-sidebar" class="d-lg-none">
+  <a href="https://www.facebook.com/Instituto-Hondureño-del-Transporte-Terrestre-547721712077799" target="_blank" class="facebook" style="border-top-right-radius: 20px;"><span>Facebook</span><i class="fab fa-facebook-f"></i></a>
+  <a href="https://twitter.com/IHTT_HN" target="_blank" class="twitter"><span>Twitter</span><i class="fab fa-twitter"></i></a> 
+  <a href="https://www.youtube.com/channel/UCLBLtdUW72ukSneMXoZT-Cw" target="_blank" class="youtube" style="border-bottom-right-radius: 20px;"><span>Youtube</span><i class="fab fa-youtube"></i></a> 
+</div> -->

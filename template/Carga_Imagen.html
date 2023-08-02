@@ -1,0 +1,480 @@
+<link href="@@DIR@@css/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection"> 
+<style>
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 36px;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+.github-big-icon {
+  position: absolute;
+  right: 150px;
+  top: 2px;
+}
+.github-big-icon span {
+    font-size: 400px;
+    opacity: .1;
+}
+
+.sweet-alert {
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #424aa07a !important;
+  border-width: 5px
+}
+
+.m .sweet-overlay {
+  background-color: rgba(0, 188, 212, 0.27);
+}
+
+.a .sweet-overlay {
+  background-color: rgba(239, 67, 13, 0.45);
+}
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-blurred {
+  height: 500px;
+}
+.ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-focused {
+  outline: none;
+  border: var(--ck-focus-ring);
+  box-shadow: var(--ck-inner-shadow),0 0;
+  height: 500px;
+}
+.col-center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+.badge {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-weight: 700;
+}
+.badge-position {
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  border-radius: 20px;
+  padding: 0.1rem 0.7rem;
+}
+.badge-color {
+    color: #fff;
+    background-color: #f9b95a;
+}
+</style>
+<input class="form-control datepicker" id="valinput" type="hidden" value="1">
+<div class="section section-lg" style="padding-top: 0rem;padding-bottom: 2rem;">
+   <div class="container">
+      <div class="row pt-5 pt-md-0">
+         <!--contenido-->
+         <div class="col-12 col-lg-12">
+
+            <div class="row">
+
+               <div class="col-12 col-sm-12 mb-4">
+                  <div class="card text-center border-light" style="min-height: 25.2rem;">
+                     <h2 class="h1 mb-3 text-center"><i class="far fa-edit" style="margin-right: 5px;font-size: 4rem;line-height: 2;"></i>Carga de Imagenes</h2>
+                      <div class="card-header">
+                        <!-- <span class="card-text small" style="font-size: 95%;">
+                            <span class="fas fa-exclamation-circle mr-2" style="color: #424aa0; font-size: 20px;"></span>
+                             Con la herramienta de publicación, puedes preparar cualquier documento para los medios.
+                        </span> -->
+                        <div class="github-big-icon"><span class="far fa-image"></span></div>
+                      </div>
+                      <div class="card-body">
+
+                        <div id="tarjetaimagen">
+
+                          <div class="row">
+
+                            <div class="col-12 col-lg-12">
+                              <div class="form-group text-left">
+                                <label for="nombreimg">Nombre de la imagen *</label>
+                                <input type="text" class="form-control" id="nombreimg" placeholder="Nombre de la imagen">
+                              </div>
+                            </div>
+                            
+
+                          </div>
+
+                          <div class="row">
+
+                            <div class="col-12 col-lg-6">
+                              <div class="form-group text-left">
+                                <label for="EscaneoSolicitud">Cargar imagen</label>
+                                <div class="custom-file">
+                                  <input onchange="CargaImgPublicacion();" type="file" class="custom-file-input" id="EscaneoSolicitud" aria-label="File upload"> 
+                                  <label class="custom-file-label" for="EscaneoSolicitud">Seleccionar la imagen que desea utilizar</label>
+                                  <input type="hidden" id="ArchivoTemporal" value="0">
+                                </div>
+                              </div>
+                            </div>
+                            
+                          </div>
+
+
+
+
+                          <!--Visualizacion de las imagenes cargadas-->
+                          <div class="row col-12 col-sm-12 text-center">
+                            <h2 class="h1 mb-3 col-center"><i class="fas fa-cloud-upload-alt" style="margin-right: 5px;font-size: 4rem;line-height: 2;"></i>Visualizaci&oacute;n de Imagenes</h2>
+                          </div>
+                          <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                              <table  id="tablebar" style="width: 100%;">
+                                <tbody id="resultbar"></tbody>
+                              </table>
+                            </div>
+                            
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                              <h6 class="text-gris" id="resultMsg_Aviso" style="float:right;"></h6>
+                            </div>
+                           
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                              <div class="row" id="resultimagenes"></div>
+                             
+                            </div>
+
+                            <div class="d-flex justify-content-center w-100">
+                              <nav aria-label="Page navigation example">
+                                <ul class="pagination" style=" text-align: right; " id="paginaaviso">
+                                </ul>
+                              </nav>
+                            </div> 
+                          </div>
+
+
+                        <!--   <div class="row">
+
+                            <div id="tarimagen" class="col-12 col-md-4 col-lg-4">
+                               <div class="card border-0 text-center">
+                                  <div class="card-header border-0 bg-white"><span class="badge badge-position badge-color">1</span><img src="Documentos/Imagenes/Slider/Alfa.png" class="card-img-top rounded shadow border-0" alt="James Portrait" id="preview"></div>
+                                  <div class="card-body">
+                                     <h3 class="h4 card-title" style="margin-top: -20px;"><div id="nombreimagen"></div></h3>
+                                     <ul class="list-unstyled d-flex justify-content-center mt-3 mb-0">
+                                        <li>
+                                          <button onclick="getIdImagen();" class="btn btn-pill btn-danger" type="button">
+                                            <span class="far fa-trash-alt"></span>
+                                          </button>
+                                        </li>
+                                     </ul>
+                                  </div>
+                               </div>
+                            </div>
+
+                          </div> -->
+
+                        </div><!--oculta tarjeta de datos imagen-->
+                   
+
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+            
+         </div>
+      </div>
+   </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+  searchImagenes();
+
+});
+
+//Funcion para cargar archivos adjuntos
+function CargaImgPublicacion(){
+$('#numeracion').html('0%');
+$('.determinate').css('width','0%')
+
+    var validarsubir=$('.file-path').val();
+    var documentoFTT = $('#EscaneoSolicitud').prop('files')[0];
+
+    if(validarsubir==""){
+      toastwarning("!ERROR¡ Debe Seleccionar un Archivo Primero");
+      return false;
+    }
+    if($("#nombreimg").val().trim().length<1){
+      toastwarning("El Campo del Nombre esta Vacío");
+      return;
+    }
+
+    var form_data = new FormData();
+    form_data.append("action","save-img-slider");
+    form_data.append("nombreimg",$('#nombreimg').val());
+    form_data.append("EscaneoSolicitud",documentoFTT);
+    form_data.append("ArchivoTemporal",$('#ArchivoTemporal').val());
+
+      sweetAlert({ 
+          title: "Subiendo archivo(s)",
+          text: '<div id="barra" > <div class="progress"> <div class="determinate" style="width: 0%"></div> </div> <div id="numeracion" style=" text-align: center; ">0%</div> </div>',
+          html: true,
+          showConfirmButton: false
+      });
+      $("#barra").show(400);
+
+         $.ajax({
+          url: 'Api_PW.php',
+          dataType: 'json',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: form_data,
+          type: 'post',
+          success: function(data){
+              var datar = data;
+              console.log(datar);
+              if(datar.result==1){
+
+                  swal({title: "Archivo(s) Subidos",
+                        text: "archivo subido con exito ...",
+                        confirmButtonText: "Presione Ok Para Continuar"},
+                      function(){
+                      swal.close();
+                      searchImagenes(); 
+                  });
+                  $("#contenthome").removeClass("a");
+                  $("#contenthome").addClass("m");
+
+                  $("#archivos").css("display","block");
+
+                  $('#ArchivoTemporal').val(datar.TBARCHIVO);
+                  //Nombre de la imagen
+                  $("#nombreimagen").html(datar.Nombre);
+                  //Limpia el input
+                  $('.file-path').val('');
+                  //RecuperarImgPublicacion(datar.Nombre);
+            }else if (datar.result==3) {
+              sweetAlert("EL ARCHIVO NO SE PUDO SUBIR", "Ya existe un tipo de archivo con ese nombre", "error");
+              $('.file-path').val('');
+            }else if (datar.result==4) {
+              sweetAlert("EL ARCHIVO NO SE PUDO SUBIR", "Debe de seleccionar un archivo", "error");
+              $('.file-path').val('');
+            }else if (datar.result==5) {
+              sweetAlert("EL ARCHIVO NO SE PUDO SUBIR", "El tipo de archivo seleccionado no esta permitido para subir", "error");
+              $('.file-path').val('');
+            }else {
+              sweetAlert("!ATENCIÓN¡",data, "error");
+              $('.file-path').val('');
+            }
+          },
+       xhr: function() {
+        // creamos un objeto XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+ 
+        // gestionamos el evento 'progress'
+        xhr.upload.addEventListener('progress', function(evt) {
+ 
+          if (evt.lengthComputable) {
+            // calculamos el porcentaje completado de la carga de archivos
+            var percentComplete = evt.loaded / evt.total;
+            percentComplete = parseInt(percentComplete * 100);
+ 
+            // actualizamos la barra de progreso con el nuevo porcentaje
+            $('#numeracion').html(percentComplete+'%');
+            $('.determinate').css('width',''+percentComplete+'%');
+
+            // una vez que la carga llegue al 100%, ponemos la progress bar como Finalizado
+            if (percentComplete === 100) {
+              $('.progress-bar').html('Finalizado');
+            }
+          }
+        }, false);
+ 
+        return xhr;
+      }
+     })
+}
+
+// function RecuperarImgPublicacion(nombre) {
+
+//   $("#tarimagen").show();
+
+//   var dataurl = 'Documentos/Imagenes/Slider/'+nombre;
+//   document.getElementById('preview').src = dataurl;
+            
+// }
+
+//Recuper las imagenes guardadas
+function searchImagenes(le) {
+
+    last = le;
+    //var boton = '@@ELIMINAR@@';
+
+    $("#resultbar").html(
+      '<tr> <td colspan="12" style="text-align:center"><i class="far fa-smile-beam" style="margin-right: 5px;"></i>Buscando tus datos...<br><div class="progress" style="height: 30px !important;"> <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 100%;animation: 0s ease 0s 1 normal none running animate-positive !important;"></div> </div> </td> </tr>'
+    );
+
+    var parameter = last+'&col_name=';
+
+    $.ajax({
+      dataType: "json",
+      timeout: 8000,
+      url: "Api_PW.php?action=search-imagen-slider&Next=" + parameter,
+      success: function(dataserver) {
+        var resultimagenes = '';
+        var pagination = '';
+        var info = dataserver[0];
+        var pagin = dataserver[1];
+        last = info.last;
+        var data = dataserver[2];
+
+        rownumber=0;
+        for (var i = 0; i < data.length; i++) {
+        rownumber = rownumber + 1;
+
+        resultimagenes +='<div id="tarjetas" class="col-12 col-md-4 col-lg-4"> <div class="card border-0 text-center"> <div class="card-header border-0 bg-white"><span class="badge badge-position badge-color">'+rownumber+'</span><img src="Documentos/Imagenes/Slider/'+data[i]['Nombre_Imagen']+'" class="card-img-top rounded shadow border-0" alt="James Portrait"></div> <div class="card-body"> <h3 class="h4 card-title" style="margin-top: -20px;"><div><span>'+data[i]['Nombre_Imagen']+'</span></div></h3> <ul class="list-unstyled d-flex justify-content-center mt-3 mb-0"> <li> <button onclick="confirmarEliminarImagen(\''+data[i].Nombre_Imagen+'\');" class="btn btn-pill btn-danger" type="button"> <span class="far fa-trash-alt"></span> </button> </li> </ul> </div> </div> </div>';
+
+        }
+
+        var ultima = "";
+        var activepage = "";
+        for (var i = 0; i < pagin.length; i++) {
+          pagination += '<li class="page-item ' + pagin[i].Activo + ' "><a class="page-link" href="javascript:searchImagenes(\'' + pagin[i].Paginas + '\');">' + pagin[i].Nun + '</a></li>';
+          activepage = pagin[i].Paginas;
+          if (pagin[i].Activo=='active') { ultima = pagin[i].Paginas; console.log(ultima); }
+          anter = pagin[0].Paginas;
+        }
+        var backpage = ultima-10;
+        var anterior = '<li id="anterior" class="page-item"><a class="page-link" href="javascript:searchImagenes(\'' +backpage+'\');"><i class="fa fa-angle-double-left"></i></a></li> <li class="page-item"><a class="page-link" href="javascript:searchImagenes(0);"><i class="fa fa-home"></i></a></li>';
+
+        var Siguiente = '<li class="page-item"><a class="page-link" href="javascript:nextPagecampaña();" ><i class="fa fa-angle-double-right"></i></a></li>';
+
+
+        if (activepage == ultima) {
+          Siguiente = '<li class="page-item disabled"><a class="page-link"><i class="fa fa-angle-double-right"></i></a></li>';
+        }
+
+        if (info.last <= 10) {
+          anterior = '<li id="anterior" class="page-item disabled"><a class="page-link"><i class="fa fa-angle-double-left"></i></a></li>';
+        }
+
+        $("#resultMsg_Aviso").html("Total Imagenes encontradas: "+info.Total);
+        $("#resultimagenes").html(resultimagenes);
+        $("#paginaaviso").html(anterior + pagination + Siguiente);
+        $("#tablebar").hide();
+        $('.tooltipped').tooltip({
+          delay: 0
+        });
+
+        if (data.length == 0) {
+          $("#resultimagenes").html('<div class=" col-12 col-sm-12 col-md-12 col-lg-12 alert alert-danger alert-dismissible fade show" id="alertbusqueda" role="alert"> <span class="alert-inner--icon"><i class="far fa-dizzy"></i></span> <span class="alert-inner--text"><strong>¡Lo sentimos!</strong> Ocurrió un error al cargar los datos.</span> </div>');
+        }
+      }
+
+    }).error(function() {
+      $("#resultimagenes").html('<div class="alert alert-danger alert-dismissible fade show" id="alertbusqueda" role="alert"> <span class="alert-inner--icon"><i class="far fa-dizzy"></i></span> <span class="alert-inner--text"><strong>¡Lo sentimos!</strong> No se encontro nada con las fechas seleccionadas.</span> </div>');
+    });
+  } 
+
+// function getIdImagen() {
+
+//   confirmarEliminarImagen($('#idimagen').val());
+
+// }
+
+//Funcion para eliminar la imagen cargada
+function confirmarEliminarImagen(nombre){
+
+  swal({ 
+  title: "",
+  text: '<div class="fm-notification-body"> <div class="fm-notification-icon"> <div class="fm-del-contact-avatar"> <span></span> <div class="fm-del-contacts-number">1</div> </div> </div> <div class="fm-notification-info"> <p>¿Estás seguro de que quieres eliminar la imagen seleccionada?</p> <div class="fm-notification-warning">Aviso: Cualquier imagen eliminada no se podra recuperar!</div> </div> <div class="clear"></div> </div>',
+  html: true,
+  showCancelButton: true,
+  cancelButtonText: "No",
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Si",
+  closeOnConfirm: false 
+},function(){
+  EliminarImagen(nombre);
+});
+   
+$("#contenthome").removeClass("m");
+$("#contenthome").addClass("a");
+}
+
+function EliminarImagen(nombre){
+  sweetAlert({ title: "",
+     text: "espere un momento por favor ...",
+     showConfirmButton: false,
+  }); 
+   var form_data = new FormData();
+   form_data.append("action","eliminarima-slider");
+   form_data.append("nombre_imagen",nombre);
+
+   $.ajax({
+    url: 'Api_PW.php',
+    dataType: 'json',
+    cache: false,
+    contentType: false,
+    processData: false,
+    data: form_data,
+    type: 'post',
+        success: function(dataserver){
+          swal("¡Borrada!", "La imagen a sido Eliminado", "success");
+          searchImagenes();
+          LimpiarCamposImagen();
+       }
+    });
+}
+
+function LimpiarCamposImagen() {
+  //$("#tarimagen").hide();
+  //var no_image = 'assets/img/no-image.png';
+  //document.getElementById('preview').src = no_image;
+  $('.file-path').val('');
+  $('#nombreimg').val('');
+  $('#nombreimagen').html('');
+}
+
+function actualizar(){
+  window.location.reload(true);
+} 
+
+</script>

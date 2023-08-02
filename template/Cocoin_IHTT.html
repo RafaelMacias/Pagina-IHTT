@@ -1,0 +1,282 @@
+<style>
+.btn-icon-only {
+  width: 3.0rem;
+  height: 3.0rem;
+  padding: 0
+}
+.btn-size-icon {
+  font-size: 25px
+}
+.col-center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto
+}
+hr {
+    margin-top: 0.0rem;
+    margin-bottom: 1.5rem;
+    border: 0;
+    border-top: 0.2rem solid #6FADDC;
+}
+p {
+  text-align: justify
+}
+/*--Nuevo--*/
+.main {
+  position: relative;
+}
+.outer-mask {
+  position: absolute;
+  left: 0px;
+  top: -70px;
+  width: 450px;
+  height: 110px;
+  overflow: hidden;
+  -webkit-transform: skew(0deg, 0deg);
+      -ms-transform: skew(0deg, 0deg);
+       -o-transform: skew(0deg, 0deg);
+          transform: skew(0deg, 0deg);
+}
+.inner-mask {
+  position: absolute;
+  left: -45px;
+  top: 14px;
+  width: 450px;
+  height: 110px;
+  overflow: hidden;
+  -webkit-transform: skew(-40deg, 0deg);
+      -ms-transform: skew(-40deg, 0deg);
+       -o-transform: skew(-40deg, 0deg);
+          transform: skew(-40deg, 0deg);
+}
+.content {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 450px;
+  height: 56px;
+  background-color: #3a3d77;
+  background-image: -webkit-linear-gradient(left, #00B7E8, #023A8F);
+  background-image:    -moz-linear-gradient(left, #00B7E8, #023A8F);
+  background-image:     -ms-linear-gradient(left, #00B7E8, #023A8F);
+  background-image:      -o-linear-gradient(left, #00B7E8, #023A8F);
+  background-image:         linear-gradient(left, #00B7E8, #023A8F);
+}
+#shape-notas-text {
+  position: absolute;
+  top: 7px;
+  left: 30px;
+  font-size: 25px;
+  font-weight: 900;
+  color: white;
+  /*transform: rotate(180deg);*/
+  transform: skew( 39deg , 0deg );
+}
+.texto-titulo {
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+.github-big-icon {
+  position: absolute;
+  right: 19px;
+  top: 385px;
+}
+.github-big-icon span {
+    font-size: 400px;
+    opacity: .1;
+}
+.github-big-img {
+  position: absolute;
+  right: 19px;
+  top: 190px;
+}
+.github-big-img img {
+    font-size: 400px;
+    opacity: .1;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0e121d;
+    border-color: #9e9e9e
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    color: #fff;
+    background-color: #0e121d;
+    border-color: #f5f5f5;
+    /*box-shadow: 0 .125rem .25rem rgba(23, 31, 56, .075), 0 0 0 .25rem rgba(69, 77, 103, .5)*/
+}
+.btn-descarga {
+  background-image: -webkit-linear-gradient(left, #00B7E8, #023A8F);
+  border-color: #f5f5f5
+}
+.plan-trabajo-text1 {
+  color: #00598f;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 0;
+  margin-top: -8px;
+  margin-bottom: 27px
+}
+.plan-trabajo-text1-movil {
+  color: #00598f;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 0;
+  margin-top: -8px;
+  margin-bottom: 27px
+}
+#plan-trabajo-text {
+  position: absolute;
+  top: 80px;
+  left: 65px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #00598f;
+  background: white;
+}
+#plan-trabajo-text-movil {
+  position: absolute;
+  top: 74px;
+  left: 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #00598f;
+  background: white;
+}
+.color-hr {
+  border: 0;   /* in order to override TWBS stylesheet */
+  height: 6px;
+  float: left;
+  width: 79%;
+  background: -webkit-linear-gradient(left, #88CFE0 0%, #88CFE0 65%,  rgba(1,144,61,1) 86.5%, rgba(1,144,61,1) 86.5%, rgba(231,31,115,1) 80.5%, rgba(231,31,115,1) 80.5%, rgba(231,31,115,1) 93%, rgba(248,169,15,1) 62.5%, rgba(248,169,15,1) 62.5%); /* Chrome10+,Safari5.1+ */
+  
+}
+.hr-text {
+  font-size: 2.5rem;
+  line-height: 0;
+  font-weight: 900;
+  color: #88CFE0;
+}
+@font-face {
+font-family: 'Pluto Sans Regular';
+src: url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.eot');
+src: url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.eot?#iefix') format('embedded-opentype'),
+url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.woff') format('woff'),
+url('assets/fonts/pluto-sans/fonts/PlutoSansRegular.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+.box-name {
+  font-family: 'Pluto Sans Regular';
+}
+</style>
+<section class="section py-5">
+   <div class="container z-2" >
+      <div class="row position-relative justify-content-center align-items-cente">
+        <div class="col-12 col-lg-12 mb-7">
+            <img class="d-lg-inline-block shadow" style="border-radius: 5px;" src="assets/img/COCOIN_IHTT.jpg" alt="Mobile App Illustration">
+        </div>
+
+          <hr style="background: #6FADDC;height: 3px;">
+          <p><i style="font-style: normal;">El nuevo Comité de Control Interno del IHTT lo conforman 12 Funcionarios Publicos con principios éticos y valores con las normas de control interno como parte de un proceso permanente y continuo para lograr la efectividad, eficiencia y economía en el cumplimiento de sus Funciones.</i></p>
+          <p><strong>Tegucigalpa, 23 de enero de 2023</strong>. El Comité de Control Interno Institucional (COCOIN) del #IHTT el que está conformado por gerencias y jefaturas de la institución. El COCOIN tiene como propósito en mantener un buen control interno, así como las prácticas de transparencia y honestidad.</p>
+          <p>Como parte de este proceso, el Comisionado Presidente, Rafael Barahona, Máxima Autoridad de la Entidad, ha juramentado al comité cuyo objetivo principal es contribuir a la eficaz y eficiente implementación, mantenimiento y mejora continua del control interno institucional; siendo para ello una importante instancia de coordinación, asesoramiento, consulta y seguimiento oportuno.</p>
+          <p>ONADICI<br>Es la Oficina Nacional de Desarrollo Integral del Control Interno de las Instituciones Públicas, creada bajo Decreto Ejecutivo número PCM -26-2007, constituido como un organismo técnico especializado del Poder Ejecutivo, adscrito a la Secretaria de Estado en el Despacho de la Presidencia, encargado del desarrollo Integral de la función de Control Interno Institucional y que funge como órgano del Sistema Nacional de Control de los Servicios Públicos (SINACORP) e informa jerárquicamente a la Presidencia de la República.</p>
+          <p>CONTROL INTERNO<br>Es un proceso permanente y continuo realizado por la dirección, gerencia y otros empleados de las entidades públicas, con el propósito de asistir a los servidores públicos en la prevención de infracciones a las leyes y a la ética, con motivo de su gestión y administración de las buenas practicas de gestion interinstitucional.</p>
+          <div class="github-big-icon"><span class="far fa-sticky-note"></span></div>
+        </div>
+
+        <!--Contenido Plan de Trabajo-->
+        <div class="col-12 mb-5">
+         <!--  <div class="main mb-4 mt-4">
+              <div class="outer-mask">
+                  <div class="inner-mask">
+                      <div class="content"><span id="shape-notas-text">NOTA DE PRENSA | COCOIN V1</span></div>
+                  </div>
+              </div>
+          </div> -->
+          <!-- <p class="texto-titulo">Plan de Trabajo</p> -->
+          <hr class="mb-6" style="background: #6FADDC;height: 3px;">
+          <!-- <p><strong>Año:</strong> 2021</p> -->
+
+
+          <div class="row">
+
+            <div class="col-12 col-lg-1"></div>
+
+            <!--Contenido Nota de Prensa Desktop-->
+            <div class="col-12 col-lg-6 d-none d-lg-block">
+              <div class="card border-light mb-4" style="border-radius: 10px;border-color: #88CFE0!important;">
+                <div class="card-body text-center text-md-left" style="padding: 0rem;">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <h2 class="mb-3 text-center" style="color: #88CFE0;font-size: 3rem;">COCOIN</h2>
+                            <p class="text-center plan-trabajo-text1">Comit&eacute; de control interno del</p>
+                            <p class="text-center" id="plan-trabajo-text">
+                              Instituto Hondureño del Transporte Terrestre
+                            </p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <span class="hr-text"><hr class="color-hr"><i>2023</i></span>
+            </div>
+
+            <!--Contenido Nota de Prensa Movil-->
+            <div class="col-12 col-lg-6 d-lg-none mb-5">
+              <div class="card border-light mb-4" style="border-radius: 10px;border-color: #88CFE0!important;">
+                <div class="card-body text-center text-md-left" style="padding: 0rem;">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <h2 class="mb-3 text-center" style="color: #88CFE0;font-size: 2.5rem;">COCOIN</h2>
+                            <p class="text-center plan-trabajo-text1-movil">Comit&eacute; de control interno del</p>
+                            <p class="text-center" id="plan-trabajo-text-movil">
+                              Instituto Hondureño del Transporte Terrestre
+                            </p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <span class="hr-text"><hr class="color-hr" style="width: 70%;"><i>2023</i></span>
+            </div>
+
+            <!--Contenido Nota de Prensa Desktop-->
+            <div class="col-12 col-md-5 d-none d-lg-block" style="margin-top: -3.5rem!important;">
+              <a title="ONADICI" href="https://www.onadici.gob.hn/"><img src="assets/img/ONADICI-285x200.png" alt="ONADICI" /></a>
+            </div>
+
+            <!--Contenido Nota de Prensa Movil-->
+           <!--  <div class="col-12 col-md-5 d-lg-none" style="margin-top: -3.5rem!important;">
+              <img src="assets/img/comite-etica.png" alt="" style="max-width: 56%;">
+            </div> -->
+			
+		  <div class="github-big-img d-lg-none"><img src="assets/img/ONADICI-285x200.png" alt=""></div>
+          </div><!--Cierre del row-->
+
+
+          <p class="mb-6" style="color: #00598f"><span style="color: #00598f;font-weight: 900;">Objetivo General: </span>Procurar: Efectividad, eficiencia y economía de las operaciones y calidad de los servicios. Proteger: Los recursos públicos contra cualquier perdida. Cumplir: Las leyes reglamentos y otras normas gubernamentales. Elaborar información: Financiera valida y confiable presentada con oportunidad.
+</p>
+
+     <!--      <div class="col-12 col-md-12 mb-4" style="margin-top: -3.5rem!important;">
+            <img src="assets/img/fondo-7.png" alt="">
+          </div> -->
+
+          <div class="col-12 col-md-2 col-center">
+            <a href="assets/Documentos/Archivos_Cocoin_IHTT_Enero_2023.pdf" target="_blank" class="btn btn-primary btn-descarga shadow">
+              <span class="mr-1"><i class="far fa-file-pdf"></i></span>Descargar
+            </a>
+            
+
+          </div>
+        
+          
+
+        </div>
+      
+      
+      </div>
+   </div>
+</section>
