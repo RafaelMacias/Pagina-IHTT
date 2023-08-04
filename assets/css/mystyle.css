@@ -60,6 +60,14 @@
 #social-sidebar a[class*="facebook"] span,
 #social-sidebar a[class*="facebook"] span:before {background: #3B5998;}
 
+#social-sidebar a[class*="tiktok"]:hover,
+#social-sidebar a[class*="tiktok"] span,
+#social-sidebar a[class*="tiktok"] span:before {background: #000000;}
+
+#social-sidebar a[class*="instagram"]:hover,
+#social-sidebar a[class*="instagram"] span,
+#social-sidebar a[class*="instagram"] span:before {background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);}
+
 #social-sidebar a[class*="youtube"]:hover,
 #social-sidebar a[class*="youtube"] span,
-#social-sidebar a[class*="youtube"] span:before {background: #f80000;}
+#social-sidebar a[class*="youtube"] span:before {background: #d31010;}
